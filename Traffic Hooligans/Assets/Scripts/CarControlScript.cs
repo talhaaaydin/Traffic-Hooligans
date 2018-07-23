@@ -25,6 +25,9 @@ public class CarControlScript : MonoBehaviour {
 	public bool otonomHizlanabilme = false;
 	public bool hizlanabilme = true;
 
+	public bool GazButton = false;
+	public bool FrenButton = false;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -35,33 +38,67 @@ public class CarControlScript : MonoBehaviour {
 	}
 
 	private void SteeringWheels(){
+		//ön tekerlekleri saga sola verilen açı kadar döndürecek.
 		float nowSteeringAngle = maxSteeringAngle * horizontalAxis;
 		onSagW.steerAngle = nowSteeringAngle;
 		onSolW.steerAngle = nowSteeringAngle;
 	}
 
 	public void Gaz(){
+		//eğer hızlanabilme true ise belirlenen motor kuvveti motorun torku olacak.
 		if (hizlanabilme) {
 			onSolW.motorTorque = motorForce * -1;
 			onSagW.motorTorque = motorForce * -1;
 			onSagW.brakeTorque = 0;
 			onSolW.brakeTorque = 0;
-		}
+			GazButton = true;
+			FrenButton = false;
+		} 
 	}
 
 	public void Brake(){
+		//eğer fren yapabilme boolu true ise belirlenen fren kuvveti ile yavaşlanılacak.
 		if (frenYapabilme) {
 			onSagW.motorTorque = 0;
 			onSolW.motorTorque = 0;
 			onSagW.brakeTorque = brakeForce;
 			onSolW.brakeTorque = brakeForce;
+			FrenButton = true;
+			GazButton = false;
 		}
 	}
 
+	public void BrakeUp(){
+		FrenButton = false;
+		onSagW.brakeTorque = 0;
+		onSolW.brakeTorque = 0;
+	}
+
+	public void GazUp(){
+		GazButton = false;
+		onSagW.motorTorque = 0;
+		onSolW.motorTorque = 0;
+	}
+
+	public void kontrolBilgisayarda(){
+		if (!frenYapabilme) {
+			onSagW.brakeTorque = 0;
+			onSolW.brakeTorque = 0;
+			FrenButton = false;
+		}
+
+		if (!hizlanabilme) {
+			onSagW.motorTorque = 0;
+			onSolW.motorTorque = 0;
+			FrenButton = false;
+		}
+	}
+
+
 	private void otonomHizlanma(){
 		if (otonomHizlanabilme) {
-			onSolW.motorTorque = motorForce * -2 ;
-			onSagW.motorTorque = motorForce * -2 ;
+			onSolW.motorTorque = motorForce * -1;
+			onSagW.motorTorque = motorForce * -1;
 		}
 	}
 
@@ -78,7 +115,7 @@ public class CarControlScript : MonoBehaviour {
 			frenYapabilme = true;
 		}
 
-		if (hiz <= enKucukHiz) {
+		if (hiz < enKucukHiz) {
 			otonomHizlanabilme = true;
 		} else {
 			otonomHizlanabilme = false;
@@ -120,6 +157,7 @@ public class CarControlScript : MonoBehaviour {
 		BoolManager ();
 		otonomHizlanma ();
 		hizLimitleme ();
+		kontrolBilgisayarda ();
 	}
 
 

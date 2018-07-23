@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494120b77304f1f42bdc3bf957b14204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yollarChild: {fileID: 0}
+  yollarChild: {fileID: 1142175944506134, guid: d30038864bb3ec5468b8202614e4094f,
+    type: 2}
   yolPrefabs:
   - {fileID: 1261319788994566, guid: 5d6d3989279f7a54cbd4966f3e45fde7, type: 2}
   - {fileID: 1757887928283866, guid: cbe43790c6eb46e43a2e07fea2aaeef1, type: 2}
@@ -61,7 +62,6 @@ MonoBehaviour:
   - {fileID: 1655083838731314, guid: e2f6383dfa03f9f4f9eddc24210501b6, type: 2}
   - {fileID: 1240985695608922, guid: 67dd8d99a0426724e8158fe5fcbb441b, type: 2}
   - {fileID: 1700667027796560, guid: bf2a2da3da86f0441931f1b6bbf23f2b, type: 2}
-  playerTransform: {fileID: 0}
   roadLength: 0
   yolSayisi: 10
   toleranceOffsetDeletingRoad: 20

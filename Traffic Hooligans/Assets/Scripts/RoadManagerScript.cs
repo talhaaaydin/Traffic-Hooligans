@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoadManagerScript : MonoBehaviour {
 
-	public GameObject yollarChild;
+	private GameObject yollarChild;
 	public GameObject[] yolPrefabs;
 
 	private Transform playerTransform;
@@ -18,6 +18,7 @@ public class RoadManagerScript : MonoBehaviour {
 	void Start () {
 		roadLength = yolPrefabs [0].GetComponent<MeshFilter> ().sharedMesh.bounds.size.z;
 		playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+		yollarChild = GameObject.FindGameObjectWithTag ("yollarChild");
 
 		for (int i = 0; i <= yolSayisi; i++) {
 			int a = Random.Range (0, yolPrefabs.Length - 1);

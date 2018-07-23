@@ -110,6 +110,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1349435450612086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4281615501812854}
+  - component: {fileID: 20506764222112504}
+  - component: {fileID: 124553416217063904}
+  - component: {fileID: 81330869878647834}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1381987754271454
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976771962495408}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.64, z: 0}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4411526521816190}
@@ -197,6 +215,7 @@ Transform:
   - {fileID: 4615433463764696}
   - {fileID: 4133820203352730}
   - {fileID: 4243260085059322}
+  - {fileID: 4281615501812854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -226,6 +245,19 @@ Transform:
   m_Father: {fileID: 4024845612998172}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4281615501812854
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349435450612086}
+  m_LocalRotation: {x: -0, y: -0.9853782, z: 0.17038143, w: 0}
+  m_LocalPosition: {x: 0, y: 2.85, z: 6.571428}
+  m_LocalScale: {x: 0.7142857, y: 0.7142856, z: 0.7142857}
+  m_Children: []
+  m_Father: {fileID: 4024845612998172}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 19.62, y: 0, z: 0}
 --- !u!4 &4411526521816190
 Transform:
   m_ObjectHideFlags: 1
@@ -317,6 +349,42 @@ Transform:
   m_Father: {fileID: 4024845612998172}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20506764222112504
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349435450612086}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 58
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!23 &23365206015296970
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -554,6 +622,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7494848, y: 1.0695552, z: 4.329441}
   m_Center: {x: -0.000000085149495, y: 0.18862648, z: 0.043239594}
+--- !u!81 &81330869878647834
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349435450612086}
+  m_Enabled: 1
 --- !u!114 &114973819203232558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,6 +657,13 @@ MonoBehaviour:
   frenYapabilme: 1
   otonomHizlanabilme: 0
   hizlanabilme: 1
+--- !u!124 &124553416217063904
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349435450612086}
+  m_Enabled: 1
 --- !u!146 &146577741535700886
 WheelCollider:
   m_ObjectHideFlags: 1
@@ -596,7 +678,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
-  m_Mass: 40
+  m_Mass: 70
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -625,7 +707,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
-  m_Mass: 40
+  m_Mass: 70
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -654,7 +736,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
-  m_Mass: 40
+  m_Mass: 70
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -683,7 +765,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
-  m_Mass: 40
+  m_Mass: 70
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4

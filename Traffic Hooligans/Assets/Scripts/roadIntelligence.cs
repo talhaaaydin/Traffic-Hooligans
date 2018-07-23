@@ -12,7 +12,7 @@ public class roadIntelligence : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		roadLength = roadManager.GetComponent<RoadManagerScript> ().roadLength;
-		playerTransform = playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+		playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 	
 	// Update is called once per frame
