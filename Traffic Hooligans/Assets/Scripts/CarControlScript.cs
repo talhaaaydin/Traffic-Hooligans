@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CarControlScript : MonoBehaviour {
 
@@ -27,6 +28,8 @@ public class CarControlScript : MonoBehaviour {
 
 	public bool GazButton = false;
 	public bool FrenButton = false;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -158,6 +161,7 @@ public class CarControlScript : MonoBehaviour {
 		otonomHizlanma ();
 		hizLimitleme ();
 		kontrolBilgisayarda ();
+
 	}
 
 

@@ -4,7 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - yollarChild
+  - yollarParent
+  - BotCarParent
+  - BotCarCreator
+  - "PotansiyelArabaKonumlar\u0131"
+  - theGod
+  - BotCar
+  - road
   layers:
   - Default
   - TransparentFX

@@ -70,9 +70,10 @@ GameObject:
   - component: {fileID: 4915380619675864}
   - component: {fileID: 54572451982372128}
   - component: {fileID: 65372580244924812}
+  - component: {fileID: 114043982845808896}
   m_Layer: 0
   m_Name: car4
-  m_TagString: Player
+  m_TagString: BotCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1301707293822580}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.1625686, y: 0.84873545, z: -1.0826726}
+  m_LocalPosition: {x: -2.2959237, y: 0.84873545, z: -0.11887602}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4634171627935990}
@@ -550,8 +551,50 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6297268, y: 1.2397695, z: 4.5708466}
-  m_Center: {x: 0.034984946, y: 0.1198847, z: 0.19267185}
+  m_Size: {x: 1.6297268, y: 1.034346, z: 4.5708466}
+  m_Center: {x: 0.034984946, y: 0.22259645, z: 0.19267185}
+--- !u!114 &114043982845808896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301707293822580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357d679e15cfb0941bbb89e9ed29b02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSolW: {fileID: 146193467237087032}
+  onSagW: {fileID: 146129454807609830}
+  arkaSolW: {fileID: 146418992485279982}
+  arkaSagW: {fileID: 146260389224845462}
+  onSolT: {fileID: 4217746527426332}
+  onSagT: {fileID: 4272154681488404}
+  arkaSolT: {fileID: 4121382278601154}
+  arkaSagT: {fileID: 4665509915286676}
+  GearRatio:
+  - 3.73
+  - 2.73
+  - 1.73
+  - 1
+  - 0.9
+  - 0.8
+  MaxRPM: 1000
+  MinRPM: 400
+  hiz: 0
+  enBuyukHiz: 12
+  enKucukHiz: 7
+  onumdekininHizi: 0
+  maxMotorForce: 4000
+  brakeForce: 6000
+  acceleration: 20
+  VerticalInputDecreaseKatSayi: 1
+  "guvenliUzakl\u0131k": 35
+  "mevcutUzakl\u0131k": 0
+  "riskliUzakl\u0131k": 25
+  "gozlemlemeUzakl\u0131g\u0131": 60
+  motorTorque: 0
+  brakeTorque: 0
 --- !u!146 &146129454807609830
 WheelCollider:
   m_ObjectHideFlags: 1

@@ -102,10 +102,10 @@ GameObject:
   - component: {fileID: 4750729688819332}
   - component: {fileID: 54905350428470552}
   - component: {fileID: 65861560023831194}
-  - component: {fileID: 114450210593230646}
+  - component: {fileID: 114376937162380136}
   m_Layer: 0
   m_Name: car2
-  m_TagString: Player
+  m_TagString: BotCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340393147446522}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.4856873, y: 0.7987863, z: 5.4712534}
+  m_LocalPosition: {x: 108.35153, y: 114.59323, z: 460.1454}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4767309533228014}
@@ -611,7 +611,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9440626, y: 1.1225119, z: 5.187024}
   m_Center: {x: 0.010809839, y: 0.25583363, z: 0.25583363}
---- !u!114 &114450210593230646
+--- !u!114 &114376937162380136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1340393147446522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d4d46db9d822d4581d5d2c1eb154a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 357d679e15cfb0941bbb89e9ed29b02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onSolW: {fileID: 146025879965785330}
@@ -630,8 +630,29 @@ MonoBehaviour:
   onSagT: {fileID: 4786251389930408}
   arkaSolT: {fileID: 4553178980357178}
   arkaSagT: {fileID: 4052502275889812}
-  maxSteeringAngle: 5
+  GearRatio:
+  - 3.73
+  - 2.73
+  - 1.73
+  - 1
+  - 0.9
+  - 0.8
+  MaxRPM: 1000
+  MinRPM: 400
   hiz: 0
+  enBuyukHiz: 12
+  enKucukHiz: 7
+  onumdekininHizi: 0
+  maxMotorForce: 4000
+  brakeForce: 6000
+  acceleration: 20
+  VerticalInputDecreaseKatSayi: 1
+  "guvenliUzakl\u0131k": 35
+  "mevcutUzakl\u0131k": 0
+  "riskliUzakl\u0131k": 25
+  "gozlemlemeUzakl\u0131g\u0131": 60
+  motorTorque: 0
+  brakeTorque: 0
 --- !u!146 &146016093576038914
 WheelCollider:
   m_ObjectHideFlags: 1

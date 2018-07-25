@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: ed28febd07c52fb42b5f05e798943449
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Camera
+    100002: Circle_000
+    100004: Circle_000_001
+    100006: Circle_000_002
+    100008: Circle_000_003
+    100010: Cube_002
+    100012: Cube_004
+    100014: Cube_004_001
+    100016: Cube_004_002
+    100018: Cube_007
+    100020: Cube_3
+    100022: Cube_3_001
+    100024: Cube_3_002
+    100026: Lamp
+    100028: //RootNode
+    400000: Camera
+    400002: Circle_000
+    400004: Circle_000_001
+    400006: Circle_000_002
+    400008: Circle_000_003
+    400010: Cube_002
+    400012: Cube_004
+    400014: Cube_004_001
+    400016: Cube_004_002
+    400018: Cube_007
+    400020: Cube_3
+    400022: Cube_3_001
+    400024: Cube_3_002
+    400026: Lamp
+    400028: //RootNode
+    2300000: Circle_000
+    2300002: Circle_000_001
+    2300004: Circle_000_002
+    2300006: Circle_000_003
+    2300008: Cube_002
+    2300010: Cube_004
+    2300012: Cube_004_001
+    2300014: Cube_004_002
+    2300016: Cube_007
+    2300018: Cube_3
+    2300020: Cube_3_001
+    2300022: Cube_3_002
+    3300000: Circle_000
+    3300002: Circle_000_001
+    3300004: Circle_000_002
+    3300006: Circle_000_003
+    3300008: Cube_002
+    3300010: Cube_004
+    3300012: Cube_004_001
+    3300014: Cube_004_002
+    3300016: Cube_007
+    3300018: Cube_3
+    3300020: Cube_3_001
+    3300022: Cube_3_002
+    4300000: Cube_004_002
+    4300002: Cube_3_002
+    4300004: Circle_000_003
+    4300006: Circle_000_002
+    4300008: Circle_000_001
+    4300010: Cube_004_001
+    4300012: Cube_3_001
+    4300014: Cube_002
+    4300016: Cube_3
+    4300018: Cube_004
+    4300020: Circle_000
+    4300022: Cube_007
+    6400000: Circle_000
+    6400002: Circle_000_001
+    6400004: Circle_000_002
+    6400006: Circle_000_003
+    6400008: Cube_002
+    6400010: Cube_004
+    6400012: Cube_004_001
+    6400014: Cube_004_002
+    6400016: Cube_007
+    6400018: Cube_3
+    6400020: Cube_3_001
+    6400022: Cube_3_002
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Back_Door_Glass
+    second: {fileID: 2100000, guid: f3cc0b985e17ba641af4f2bcf8a231f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Back_door_Body__uaz_tga_001
+    second: {fileID: 2100000, guid: 4de27b6562d278c47ac0216e18ac2559, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Body__uaz_tga_001
+    second: {fileID: 2100000, guid: 57a411c0713eeb44889f5c2c162f5cab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Body__uazglass_tga
+    second: {fileID: 2100000, guid: e35151f22d2157249a7831607ef4c750, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Door_Body__uaz_tga_001
+    second: {fileID: 2100000, guid: bba19da341b7ac84a968b72e771273d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Door_Glass
+    second: {fileID: 2100000, guid: 01a7393a4d339f4428bae51efdaf8ffc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Panels
+    second: {fileID: 2100000, guid: 7b9f2fea8f66e8248918b92803e77201, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Uaz_Wheel
+    second: {fileID: 2100000, guid: 4946ee6f1e31e404193c64bb8fc38bba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Untitled
+    second: {fileID: 2100000, guid: e35151f22d2157249a7831607ef4c750, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

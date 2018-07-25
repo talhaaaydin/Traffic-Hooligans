@@ -329,13 +329,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1951712403127584}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.018666586, y: 11.688862, z: 0.26}
+  m_LocalRotation: {x: 0.65551996, y: -0, z: -0, w: 0.7551779}
+  m_LocalPosition: {x: 0.01866647, y: 11.222018, z: 0.5203192}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 4822612916380538}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 81.91801, y: 0, z: 0}
 --- !u!4 &4319287057071400
 Transform:
   m_ObjectHideFlags: 1
@@ -368,13 +368,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1690960563099060}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3239994, y: 10.922195, z: -0.01733335}
+  m_LocalRotation: {x: 0.652606, y: -0.042839024, z: -0.06053769, w: 0.7540593}
+  m_LocalPosition: {x: -2.323998, y: 11.38882, z: -0.27771676}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 4822612916380538}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 78.243004, y: -44.817, z: -46.259003}
 --- !u!4 &4456702042984710
 Transform:
   m_ObjectHideFlags: 1
@@ -407,13 +407,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497478334733600}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3333335, y: 10.922195, z: -0.01733335}
+  m_LocalRotation: {x: 0.6551045, y: 0.026880892, z: 0.023333525, w: 0.75469935}
+  m_LocalPosition: {x: 2.3333337, y: 11.38882, z: -0.27771676}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 4822612916380538}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 80.953, y: 26.901001, z: 26.612001}
 --- !u!4 &4797103756198290
 Transform:
   m_ObjectHideFlags: 1
@@ -446,8 +446,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138182459193390}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.53, y: 0.35135326, z: -0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.30480003, y: 0.35135326, z: 4.5}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4016908898103288}
@@ -929,10 +929,10 @@ Light:
   m_GameObject: {fileID: 1497478334733600}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 0.91466707, g: 0.9485294, b: 0.33477506, a: 1}
-  m_Intensity: 6.04
-  m_Range: 1.16
+  m_Intensity: 11.27
+  m_Range: 8.2
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -952,7 +952,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 2.67
+  m_BounceIntensity: 46.22
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -965,11 +965,11 @@ Light:
   m_GameObject: {fileID: 1690960563099060}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 0.91466707, g: 0.9485294, b: 0.33477506, a: 1}
-  m_Intensity: 6.04
-  m_Range: 1.16
-  m_SpotAngle: 30
+  m_Intensity: 11.27
+  m_Range: 8.2
+  m_SpotAngle: 33
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -988,7 +988,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 2.67
+  m_BounceIntensity: 46.22
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1001,11 +1001,11 @@ Light:
   m_GameObject: {fileID: 1951712403127584}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 0.91466707, g: 0.9485294, b: 0.33477506, a: 1}
-  m_Intensity: 6.04
-  m_Range: 1.16
-  m_SpotAngle: 30
+  m_Intensity: 9.31
+  m_Range: 8.3
+  m_SpotAngle: 27
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -1024,7 +1024,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 2.67
+  m_BounceIntensity: 46.22
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
