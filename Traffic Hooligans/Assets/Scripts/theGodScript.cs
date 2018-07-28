@@ -7,21 +7,28 @@ using TMPro;
 
 public class theGodScript : MonoBehaviour {
 
+	private AudioSource audioS;
 	public GameObject[] carPrefabs;
-	public GameObject roadManagerP, BotCarCreatorP, potCarLocP;
+	public GameObject roadManagerP, BotCarCreatorP, potCarLocP, MainCameraP;
 	public GameObject theCar, BotCarCreator;
-	public GameObject Gazbutton, Frenbutton, EngineStartbutton;
-	public TextMeshProUGUI speedText, distanceText;
+	public GameObject Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge;
 	private GameObject PotansiyelArabaKonumları;
+	public TextMeshProUGUI speedText, distanceText, skorText, skorPanelText, katedilenMesafeValueText, katedilenMesafeMoneyText, yakınMakasValueText, yakınMakasMoneyText;
+	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, toplamMoneyText;
+
+	public TMP_ColorGradient seksen5alti, seksen5ustu;
 
 	private Vector3 startPositionPlayer = new Vector3 (0, 0.85f, 0);
 	public float posPOTOffsetZ = 20.08f;
+	private float distance, hiz, yuksekHizTime;
+	public float skor;
+	public float skorHiz = 85f;
+	public float katedilenMesafeParaKatSayisi, yakınMakasMesafeParaKatSayisi, seksen5kmhUstuParaKatSayisi;
+	private bool hizlaniyor;
 
-	private float distance, hiz;
-
-	private AudioSource audioS;
 	// Use this for initialization
 	void Start () {
+		skor = distance = hiz = yuksekHizTime = 0;
 		createCar (Random.Range (0, carPrefabs.Length - 1));
 		createManagers ();
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -36,7 +43,7 @@ public class theGodScript : MonoBehaviour {
 	}
 
 	void createManagers(){
-		GameObject RoadManager;
+		GameObject RoadManager, MainCamera;
 
 		RoadManager = Instantiate (roadManagerP) as GameObject;
 		RoadManager.transform.position = Vector3.zero;
@@ -47,12 +54,14 @@ public class theGodScript : MonoBehaviour {
 		PotansiyelArabaKonumları = Instantiate (potCarLocP) as GameObject;
 		PotansiyelArabaKonumları.transform.position = Vector3.zero;
 
+		MainCamera = Instantiate (MainCameraP) as GameObject;
+		MainCamera.transform.position = Vector3.zero;
+
 	}
 
 	void Update(){
 		ArabaKonumlarıTransformFix ();
 		TextSettings ();
-		distance += hiz * Time.smoothDeltaTime / 125;
 		//uzaklık = hiz * zaman
 		//uzaklık birimi = km
 		//hiz birimi = km / saat = km / 3600 saniye
@@ -60,17 +69,69 @@ public class theGodScript : MonoBehaviour {
 		//km = km / 3600 saniye * 3600 saniye
 	}
 
+
+
 	void butonaAta(){
 		EngineStartbutton.GetComponent<Button> ().onClick.AddListener (EngineStart);
 	}
 
 	void TextSettings(){
-		hiz = theCar.GetComponent<Rigidbody> ().velocity.magnitude;
-		speedText.SetText (((int)(hiz*2.5)).ToString () );
+		float gidilenYolParasi = 0, yuksekHizParasi = 0, toplamPara = 0; 
 
-		Vector3 nowPOS = theCar.transform.position;
-		float gidilenYolValue = Vector3.Distance (nowPOS, startPositionPlayer);
-		distanceText.SetText (((int)gidilenYolValue / 360f * 2.95f).ToString ("F1") );
+		//hiz göstergesi
+		hiz = theCar.GetComponent<Rigidbody> ().velocity.magnitude;
+		speedText.SetText (((int)(hiz*10/3)).ToString () );
+
+		//gidilen toplam yol gösterge
+		float gidilenYolValue2 = hiz * 10 / 600 * Time.deltaTime;
+		distance += gidilenYolValue2;
+		distanceText.SetText ((distance).ToString ("F1") );
+		//skor panelindeki gidilen toplam yol
+		katedilenMesafeValueText.SetText (distanceText.text);
+		gidilenYolParasi = (float.Parse (katedilenMesafeValueText.text)) * katedilenMesafeParaKatSayisi;
+		katedilenMesafeMoneyText.text = (gidilenYolParasi).ToString ("F1");
+
+		//arabamız hızlandığı zamanlar puan artışı olacak.
+		hizlaniyor = theCar.GetComponent<CarControllerScript> ().hizlaniyor;
+		/*eğer arabamız hizlaniyor ve belirlenen yüksek hiz değerinden daha düşük bir hızdayken ve hizimiz en küçük ulaşılacak hızdan daha çok
+		olduğu zamanlar skorumuz time.delta time ın 10 katı şeklinde artıyor.
+		hizimiz en küçük ulaşılacak hızdan daha çok olduğu zamanlar koşulunu ortaya atmamamızın sebebi arabamizin hiz belirlenen
+		en küçük hizdan düşük olduğu zamanlar zaten kendi kendine hizlaniyor zaten.*/
+		if (hizlaniyor && hiz * 10/3 < skorHiz && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
+			skor += Time.deltaTime * 10f;
+		}
+		/*eğer arabamiz hizlaniyor ve belirlenen yüksek hiz değerinden daha büyük veya ona eşitse ve hizimiz en küçük ulaşılacak hızdan daha çok
+		olduğu zamanlar skorumuz time.delta time ın 30 katı şeklinde artıyor.*/
+		else if (hizlaniyor && hiz * 10/3 >= skorHiz  && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
+			skor += Time.deltaTime * 30f;
+		}
+
+		//hizimizi km/h cinsine çevirmek için 10 / 3 ile çarpıyoruz.
+		//eğer hizimiz km/h cinsinden belirlenen yüksek hizdan düşükse skor yazdığımız yazıyı seksen5altı
+		//rengi olarak belirlediğimiz renk setini ayarlıyoruz.
+		if (hiz * 10 / 3 < skorHiz) {
+			skorText.colorGradientPreset = seksen5alti;
+		}//eğer hizimiz km/h cinsinden belirlenen yüksek hizdan büyük ve eşitse ve hızlanıyorsam skor yazdığımız yazıyı seksen5ustu
+		//rengi olarak belirlediğimiz renk setini ayarlıyoruz.
+		else if (hiz * 10 / 3 >= skorHiz && hizlaniyor) {
+			skorText.colorGradientPreset = seksen5ustu;
+		} 
+		skorText.text = skorPanelText.text = (Mathf.RoundToInt(skor)).ToString();
+
+		if (hiz * 10 / 3 >= skorHiz) {
+			yuksekHizGosterge.SetActive (true);
+			yuksekHizTime += Time.smoothDeltaTime;
+		} else {
+			yuksekHizGosterge.SetActive (false);
+		}
+
+		yuksekHizValueText.text = seksen5kmhustuValueText.text = (Mathf.RoundToInt(yuksekHizTime)).ToString ();
+		yuksekHizParasi = float.Parse (seksen5kmhustuValueText.text) * seksen5kmhUstuParaKatSayisi;
+		seksen5kmhUstuMoneyText.text = (yuksekHizParasi).ToString ("F1");
+
+		toplamPara = Mathf.RoundToInt(yuksekHizParasi + gidilenYolParasi);
+		toplamMoneyText.text = toplamPara.ToString ();
+
 	}
 
 	void EngineStart(){

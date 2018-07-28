@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarControllerScript : MonoBehaviour {
 
 	public WheelCollider onSolW, onSagW, arkaSolW, arkaSagW;
 	public Transform onSolT, onSagT, arkaSolT, arkaSagT;
+	public bool carptim = false;
 
 	private Rigidbody rb;
+	private AudioSource audioS;
+	public AnimationClip ShiftingGear;
+	//diğer araçlar tarafından kontrol edildiği için public olması gerekir.
 	public float hiz;
 
-	private float horizontalInput;
+	public float horizontalInput;
 	private float verticalInput;
 
 	public float acceleration = 20;
@@ -22,51 +27,60 @@ public class CarControllerScript : MonoBehaviour {
 
 	private bool frenYapabilme = false;
 	private bool gazBasili = false;
+	public bool ShiftingGearNow = false;
+	public bool hizlaniyor =false;
 
 	public float brakeTorque, motorTorque;
 
 	public float VerticalInputDecreaseKatSayi = 2;
 
 	public float[] GearRatio;
-	public int CurrentGear = 0;
+	private int CurrentGear = 0;
 	public float MaxRPM = 3000f;
 	public float MinRPM = 1000f;
-	public float nowRPM;
+	private float nowRPM;
 	public float EngineRPM = 0f;
 
 	public float KontrolMesafesi = 3.2f;
 
-	private AudioSource audioS;
-
 
 	private void GearOperations(){
-		EngineRPM = -(onSagW.rpm + onSolW.rpm) / 2 * GearRatio [CurrentGear];
-
+		//motor rpm i bir tekerlegin rpm i ile geçerli vitesin vites oranını çarparak buluruz.
 		nowRPM = -onSagW.rpm;
+		EngineRPM = nowRPM * GearRatio [CurrentGear];
+
+
 		//SHIFT GEAR
+		//Eğer motor rpm max rpm den büyükse vites arttırılması gerekir.
 		if (EngineRPM >= MaxRPM) {
+			
 			int GeciciVites = CurrentGear;
+			//for döngüsü ile tüm vites oranlarını deniyoruz.
 			for (int i = 0; i < GearRatio.Length; i++) {
+				//vites oranlarını en küçükten başlatarak deniyoruz ve max rpm den düşük bir motor rpm inin bulunması için if kullanıyoruz.
 				if (nowRPM * GearRatio [i] < MaxRPM) {
+					//eğer motor rpm imiz geçerli vites oranında max rpm den düşükse o viteste kalabiliriz.
 					GeciciVites = i;
 					break;
 				}
 			}
-
+			//shifting gear now animasyon koşuludur. vites değiştirdiğimiz için küçük bir animasyon oynatılır.
+			ShiftingGearNow = true;
+			//ve bulduğumuz vites geçerli vitesimiz olur.
 			CurrentGear = GeciciVites;
-		}
+		} 
 
 		if (EngineRPM <= MinRPM) {
 			int GeciciVites = CurrentGear;
-			for (int a = GearRatio.Length - 1; a >= 0; a--) {
+			for (int a = GearRatio.Length - 1; a > -1; a--) {
 				if (nowRPM * GearRatio [a] > MinRPM) {
 					GeciciVites = a;
 					break;
 				}
 			}
-
+			ShiftingGearNow = true;
 			CurrentGear = GeciciVites;
-		}
+		} 
 
 	}
 
@@ -74,6 +88,14 @@ public class CarControllerScript : MonoBehaviour {
 		audioS.pitch = float.Parse(((float)(Mathf.Abs (EngineRPM / MaxRPM) + 0.6)).ToString("F2"));
 		if (audioS.pitch > 2f) {
 			audioS.pitch = 2f;
+		}
+	}
+
+	private void AnimationController(){
+		// belirlenen en küçük hıza ulaşıncaya kadar vites değiştirilse de hissettirilmesini istemiyoruz o yüzden hizimiz sadece belirlenen 
+		// en küçük hızdan daha büyük olduğu zamanlar animator daki animasyon koşulunu burada viteslerle değiştirdiğimiz koşul değişkenine eşitliyoruz.
+		if (hiz > enKucukHiz) {
+			GetComponent<Animator> ().SetBool ("ShiftingGearNow", ShiftingGearNow);
 		}
 	}
 
@@ -85,32 +107,49 @@ public class CarControllerScript : MonoBehaviour {
 	}
 
 	private void Steering(){
-		//donme açısı = yatay input değeri ile en büyük donme açısının çarpımı kadardır.
+		//aslında donme açısını direkt olarak yatay girişe eşitlediğimizden dolayı bu değişkene gerek yok fakat kullanırken hassasiyet beğenilmezse
+		//diye böyle bir değişken kullanmayı uygun gördüm.
 		float steeringAngle = horizontalInput;
 
+		//geçici bir vector3 oluşturuyoruz ve bunu arabamızın şu an ki pozisyon değerlerine eşitliyoruz.
 		Vector3 pos = transform.position;
+		//daha sonra x değerini yani yolda sağ sol yapmamıza yarayan değeri yukarıdaki donme açısına bağımlı hale getiriyoruz.
 		pos.x += steeringAngle; 
+		//fakat arabamızın bariyerleri aşıp gitmemesi için x değerini -7 ile 7 arasına sıkıştırıyoruz ki bunlar yolda ulaşılabilecek en güvenli
+		//değerler oluyor.
 		pos.x = Mathf.Clamp (pos.x, -7f, 7f);
+		//ve sonra arabımızın konumunu geçici vector 3 ümüze eşitliyoruz.
 		transform.position = pos;
 
 	
 	}
 
 	private void CarRotationFix(){
-		Quaternion quat = transform.rotation;
-		quat.x = 0;
-		quat.z = 0;
-		quat.y = 180;
-		transform.rotation = quat;
+		//arabamızın rotasyon değerlerini tek değiştiren vites değiştirme animasyonumuz olduğundan animasyon koşulu 1 değerindeyken
+		//rotasyon değerlerini rahat bırakıyoruz.
+		if (!ShiftingGearNow) {
+			//geçici bir quaternion oluşturarak bunu rotasyon değerlerimize eşitliyoruz.
+			Quaternion quat = transform.rotation;
+			//z ve y değerlerini 0 ve 180 e eşitliyoruz. x değerine karışmıyoruz çünkü onu Steering metodumuzda -7 ve 7 arasına
+			//sıkıştırıp, accelerometerin köpeği haline getirdik.
+			quat.z = 0;
+			quat.y = 180;
+			//ve rotasyon değerlerimizi geçici quaterniona eşitledik.
+			transform.rotation = quat;
+		}
 	}
 
-	private void UpdateWheelPose(WheelCollider collider, Transform transform){
+	//wheelcolliderlerımız motoru ve freni kontrol eder.
+	private void UpdateWheelPose(WheelCollider collider, Transform transform1){
+		//geçici bir vector3 ve bir tane de quaternion oluşturduk
 		Vector3 pos;
 		Quaternion quat;
 
+		//wheelcollider ımızın pozisyonunu ve rotasyon değerlerini geçici vector3 ve quat a atadık.
 		collider.GetWorldPose (out pos, out quat);
-		transform.position = pos;
-		transform.rotation = quat;
+		//daha sonra tekerlerimizin pozisyon ve rotasyon değerlerini wheel colliderlerınkine eşitledik.
+		transform1.position = pos;
+		transform1.rotation = quat;
 	}
 
 	private void UpdateWheelPoses(){
@@ -121,6 +160,7 @@ public class CarControllerScript : MonoBehaviour {
 	}
 
 	public void VerticalInputIncrease(){
+		
 		verticalInput += Time.deltaTime * acceleration;
 		if (verticalInput > 1) {
 			verticalInput = 1;
@@ -157,8 +197,10 @@ public class CarControllerScript : MonoBehaviour {
 	public void Gaz(bool basili){
 		if (basili) {
 			gazBasili = true;
+			hizlaniyor = true;
 		} else {
 			gazBasili = false;
+			hizlaniyor = false;
 		}
 	}
 
@@ -206,14 +248,19 @@ public class CarControllerScript : MonoBehaviour {
 		} else {
 			frenYapabilme = true;
 		}
+
+		if (ShiftingGearNow) {
+			Invoke ("ShiftingGearNowOff", ShiftingGear.length);
+		}
+	}
+	
+	private void ShiftingGearNowOff(){
+		ShiftingGearNow = false;
 	}
 
-	private void BaskaBirArabayaMıCarptın(){
-		RaycastHit hit;
-		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.back), out hit, Mathf.Infinity)) {
-			if (hit.distance <= KontrolMesafesi) {
-				Debug.Log ("Çarptın!");
-			}
+	void OnCollisionEnter(Collision coll){
+		if (coll.gameObject.CompareTag ("BotCar")) {
+			carptim = true;
 		}
 	}
 
@@ -221,6 +268,8 @@ public class CarControllerScript : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		verticalInput = 0;
 		audioS = GetComponent<AudioSource> ();
+		carptim = false;
+
 	}
 
 	void Update(){
@@ -231,8 +280,8 @@ public class CarControllerScript : MonoBehaviour {
 		if (gazBasili) {
 			VerticalInputIncrease ();
 		}
-		BaskaBirArabayaMıCarptın ();
 		CarSound ();
+		AnimationController ();
 		hiz = rb.velocity.magnitude;
 
 	}

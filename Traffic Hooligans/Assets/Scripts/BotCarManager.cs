@@ -75,7 +75,7 @@ public class BotCarManager : MonoBehaviour {
 		enKucukHiz = theCar.GetComponent<CarControllerScript> ().enKucukHiz;
 		hiz = theCar.GetComponent<CarControllerScript> ().hiz;
 
-		if (hiz >= enKucukHiz) {
+		if (hiz >= enKucukHiz && Time.timeScale == 1) {
 			if (BotCarParent.childCount <= limitCreatingBots) {
 				spawnCar (Random.Range (0, BotCarPrefabs.Length), Random.Range (0, 4));
 			} else {

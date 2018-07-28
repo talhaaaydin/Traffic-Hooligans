@@ -8,7 +8,7 @@ public class RoadManagerScript : MonoBehaviour {
 	public GameObject[] yolPrefabs;
 
 	private Transform playerTransform;
-	private float spawnZ = 0f;
+	private float spawnZ = -5f;
 	public float roadLength;
 	public int yolSayisi = 10;
 	public float toleranceOffset = 20f;

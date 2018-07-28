@@ -60,5 +60,12 @@ MonoBehaviour:
   - {fileID: 1655083838731314, guid: e2f6383dfa03f9f4f9eddc24210501b6, type: 2}
   - {fileID: 1240985695608922, guid: 67dd8d99a0426724e8158fe5fcbb441b, type: 2}
   - {fileID: 1700667027796560, guid: bf2a2da3da86f0441931f1b6bbf23f2b, type: 2}
+  - {fileID: 1586057556946786, guid: dc6546d8eb7a2d3488539f9d82ac31ba, type: 2}
+  - {fileID: 1675391636553648, guid: 9fd0e3c85b1cb0740a50429be00ff089, type: 2}
+  - {fileID: 1609915813718366, guid: c5d4a5733202fb8449ae054a3a9fe3bd, type: 2}
+  - {fileID: 1185648578063976, guid: 575014faeaaeb564b981559af0f1005c, type: 2}
+  - {fileID: 1939062890959508, guid: 9a9dfd4c94137f847accd1d2891edbe9, type: 2}
+  - {fileID: 1087071963260772, guid: 3924356568e5d494a8b68efd269c9d8b, type: 2}
   roadLength: 0
   yolSayisi: 20
+  toleranceOffset: 40
