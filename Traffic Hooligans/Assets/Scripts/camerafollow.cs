@@ -8,8 +8,7 @@ public class camerafollow : MonoBehaviour {
 	public float followSpeed = 10f;
 	public float lookSpeed = 10f;
 
-	void Awake(){
-		objectToFollow = GameObject.FindGameObjectWithTag ("Player").transform;
+	void Start(){
 	}
 
 	public void LookAtTarget(){
