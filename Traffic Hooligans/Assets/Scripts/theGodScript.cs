@@ -25,6 +25,7 @@ public class theGodScript : MonoBehaviour {
 	public float skorHiz = 85f;
 	public float katedilenMesafeParaKatSayisi, yakınMakasMesafeParaKatSayisi, seksen5kmhUstuParaKatSayisi;
 	private bool hizlaniyor;
+	public float unitToKmH = 10 / 3;
 
 	// Use this for initialization
 	void Start () {
@@ -80,10 +81,10 @@ public class theGodScript : MonoBehaviour {
 
 		//hiz göstergesi
 		hiz = theCar.GetComponent<Rigidbody> ().velocity.magnitude;
-		speedText.SetText (((int)(hiz*10/3)).ToString () );
+		speedText.SetText (((int)(hiz*unitToKmH)).ToString () );
 
 		//gidilen toplam yol gösterge
-		float gidilenYolValue2 = hiz * 10 / 600 * Time.deltaTime;
+		float gidilenYolValue2 = hiz * unitToKmH / 200 * Time.deltaTime;
 		distance += gidilenYolValue2;
 		distanceText.SetText ((distance).ToString ("F1") );
 		//skor panelindeki gidilen toplam yol
@@ -97,23 +98,23 @@ public class theGodScript : MonoBehaviour {
 		olduğu zamanlar skorumuz time.delta time ın 10 katı şeklinde artıyor.
 		hizimiz en küçük ulaşılacak hızdan daha çok olduğu zamanlar koşulunu ortaya atmamamızın sebebi arabamizin hiz belirlenen
 		en küçük hizdan düşük olduğu zamanlar zaten kendi kendine hizlaniyor zaten.*/
-		if (hizlaniyor && hiz * 10/3 < skorHiz && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
+		if (hizlaniyor && hiz * unitToKmH < skorHiz && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
 			skor += Time.deltaTime * 10f;
 		}
 		/*eğer arabamiz hizlaniyor ve belirlenen yüksek hiz değerinden daha büyük veya ona eşitse ve hizimiz en küçük ulaşılacak hızdan daha çok
 		olduğu zamanlar skorumuz time.delta time ın 30 katı şeklinde artıyor.*/
-		else if (hizlaniyor && hiz * 10/3 >= skorHiz  && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
+		else if (hizlaniyor && hiz * unitToKmH >= skorHiz  && hiz > theCar.GetComponent<CarControllerScript>().enKucukHiz) {
 			skor += Time.deltaTime * 30f;
 		}
 
 		//hizimizi km/h cinsine çevirmek için 10 / 3 ile çarpıyoruz.
 		//eğer hizimiz km/h cinsinden belirlenen yüksek hizdan düşükse skor yazdığımız yazıyı seksen5altı
 		//rengi olarak belirlediğimiz renk setini ayarlıyoruz.
-		if (hiz * 10 / 3 < skorHiz) {
+		if (hiz * unitToKmH < skorHiz) {
 			skorText.colorGradientPreset = seksen5alti;
 		}//eğer hizimiz km/h cinsinden belirlenen yüksek hizdan büyük ve eşitse ve hızlanıyorsam skor yazdığımız yazıyı seksen5ustu
 		//rengi olarak belirlediğimiz renk setini ayarlıyoruz.
-		else if (hiz * 10 / 3 >= skorHiz && hizlaniyor) {
+		else if (hiz * unitToKmH >= skorHiz && hizlaniyor) {
 			skorText.colorGradientPreset = seksen5ustu;
 		} 
 		skorText.text = skorPanelText.text = (Mathf.RoundToInt(skor)).ToString();
@@ -121,7 +122,7 @@ public class theGodScript : MonoBehaviour {
 			PlayerPrefs.SetInt ("skorBest", Mathf.RoundToInt (skor));
 		}
 
-		if (hiz * 10 / 3 >= skorHiz) {
+		if (hiz * unitToKmH >= skorHiz) {
 			yuksekHizGosterge.SetActive (true);
 			yuksekHizTime += Time.smoothDeltaTime;
 		} else {

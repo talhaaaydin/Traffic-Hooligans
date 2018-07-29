@@ -8,8 +8,6 @@ public class camerafollow : MonoBehaviour {
 	public float followSpeed = 10f;
 	public float lookSpeed = 10f;
 
-	void Start(){
-	}
 
 	public void LookAtTarget(){
 		Vector3 lookDirection = objectToFollow.position - transform.position;

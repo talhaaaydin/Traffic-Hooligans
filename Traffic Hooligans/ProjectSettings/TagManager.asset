@@ -12,6 +12,7 @@ TagManager:
   - BotCar
   - road
   - horizontalText
+  - kilim
   layers:
   - Default
   - TransparentFX

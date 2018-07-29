@@ -13,7 +13,7 @@ public class CarControllerScript : MonoBehaviour {
 	private AudioSource audioS;
 	public AnimationClip ShiftingGear;
 	//diğer araçlar tarafından kontrol edildiği için public olması gerekir.
-	public float hiz;
+	public float hiz, manevraBecerisi;
 
 	public float horizontalInput;
 	private float verticalInput;
@@ -109,7 +109,7 @@ public class CarControllerScript : MonoBehaviour {
 	private void Steering(){
 		//aslında donme açısını direkt olarak yatay girişe eşitlediğimizden dolayı bu değişkene gerek yok fakat kullanırken hassasiyet beğenilmezse
 		//diye böyle bir değişken kullanmayı uygun gördüm.
-		float steeringAngle = horizontalInput;
+		float steeringAngle = horizontalInput * manevraBecerisi;
 
 		//geçici bir vector3 oluşturuyoruz ve bunu arabamızın şu an ki pozisyon değerlerine eşitliyoruz.
 		Vector3 pos = transform.position;
