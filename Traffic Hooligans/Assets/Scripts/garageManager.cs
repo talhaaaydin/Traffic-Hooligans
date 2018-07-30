@@ -7,6 +7,7 @@ using TMPro;
 public class garageManager : MonoBehaviour {
 
 	public GameObject[] playerCarPrefabs;
+	GameObject theCar;
 	public Vector3 startPosition;
 	public Quaternion quat;
 	public Button nextButton, beforeButton;
@@ -16,6 +17,7 @@ public class garageManager : MonoBehaviour {
 	public float rotateSpeed = 10f;
 	bool kilimleriDondurelimMi = true, ustBarGuncellensin = false;
 	public int prefabIndex = 0;
+	private Button hizUpgradeButton, brakeUpgradeButton, manevraUpgradeButton;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,9 @@ public class garageManager : MonoBehaviour {
 		CreateCar ();	
 		ButonaAta ();
 		TextSettings ();
+		hizUpgradeButton = GameObject.FindGameObjectWithTag ("hizUpgradeButton").GetComponent<Button>();
+		brakeUpgradeButton = GameObject.FindGameObjectWithTag ("brakeUpgradeButton").GetComponent<Button>();
+		manevraUpgradeButton = GameObject.FindGameObjectWithTag ("manevraUpgradeButton").GetComponent<Button>();
 	}
 
 	void kilimleriDondur(bool izin){
@@ -38,13 +43,15 @@ public class garageManager : MonoBehaviour {
 
 	void Update(){
 		kilimleriDondur (kilimleriDondurelimMi);
-		if (ustBarGuncellensin) {
-			TextSettings ();
-		}
+		TextSettings ();
+		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz)).ToString());
+		frenValue.SetText (((int)theCar.GetComponent<CarControllerScript>().brakeForce / 100).ToString());
+		manevraValue.SetText (((int)theCar.GetComponent<CarControllerScript> ().manevraBecerisi * 40).ToString());
+		
 	}
 
 	private void CreateCar(){
-		GameObject theCar;
+		
 		theCar = Instantiate (playerCarPrefabs [prefabIndex]) as GameObject;
 		theCar.GetComponent<Animator> ().StopPlayback ();
 		theCar.GetComponent<Animator> ().enabled = false;
@@ -53,9 +60,9 @@ public class garageManager : MonoBehaviour {
 		theCar.transform.SetParent (kilimler.transform);
 		kilimleriDondurelimMi = true;
 
-		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz) * (int)(theCar.GetComponent<CarControllerScript>().maxMotorForce) / 2000).ToString());
+		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz)).ToString());
 		frenValue.SetText (((int)theCar.GetComponent<CarControllerScript>().brakeForce / 100).ToString());
-		manevraValue.SetText (((int)theCar.GetComponent<CarControllerScript> ().manevraBecerisi * 10).ToString());
+		manevraValue.SetText (((int)theCar.GetComponent<CarControllerScript> ().manevraBecerisi * 40).ToString());
 
 	}
 
@@ -89,6 +96,7 @@ public class garageManager : MonoBehaviour {
 
 	void DeActiveCurrentCar(){
 		GameObject.FindGameObjectWithTag ("Player").SetActive(false);
+		Destroy (GameObject.FindGameObjectWithTag ("Player"));
 	}
 
 	void ControlButtons(){
@@ -105,10 +113,19 @@ public class garageManager : MonoBehaviour {
 				beforeButton.gameObject.SetActive (true);
 			}
 
+		hizUpgradeButton.gameObject.SetActive (true);
+		hizUpgradeButton.enabled = true;
+
+		brakeUpgradeButton.gameObject.SetActive (true);
+		brakeUpgradeButton.enabled = true;
+
+		manevraUpgradeButton.gameObject.SetActive (true);
+		manevraUpgradeButton.enabled = true;
+
 	}
 
 	void TextSettings(){
-		moneyText.text = PlayerPrefs.GetInt ("para").ToString();
-		scoreText.text = "En yüksek: " + PlayerPrefs.GetInt ("skorBest").ToString ();
+		moneyText.text = PlayerPrefs.GetInt ("para", 0).ToString();
+		scoreText.text = "En yüksek: " + PlayerPrefs.GetInt ("skorBest", 0).ToString ();
 	}
 }

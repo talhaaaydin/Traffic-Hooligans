@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 65455092077231900}
   - component: {fileID: 114244401149906446}
   - component: {fileID: 95746653738178350}
+  - component: {fileID: 114243803818545282}
   m_Layer: 0
   m_Name: Car5
   m_TagString: Player
@@ -567,6 +568,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114243803818545282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211802634349960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff2c28452a38c048a5f633a50d1c9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  garajSahneIsmi: Garage
+  sprites:
+  - {fileID: 21300000, guid: a0161971adf6c2b43b05f4d6a886418c, type: 3}
+  - {fileID: 21300000, guid: c19469d2c5356c349918ea20cab123e6, type: 3}
+  - {fileID: 21300000, guid: 8c961f0d1d5f2ff44ad569c2481b0855, type: 3}
+  upgradeLevelSpeed: {fileID: 0}
+  upgradeLevelBrake: {fileID: 0}
+  upgradeLevelManevra: {fileID: 0}
 --- !u!114 &114244401149906446
 MonoBehaviour:
   m_ObjectHideFlags: 1

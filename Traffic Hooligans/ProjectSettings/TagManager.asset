@@ -13,6 +13,12 @@ TagManager:
   - road
   - horizontalText
   - kilim
+  - hizUpgradeButton
+  - brakeUpgradeButton
+  - manevraUpgradeButton
+  - upgradeLevelSpeed
+  - upgradeLevelBrake
+  - upgradeLevelManevra
   layers:
   - Default
   - TransparentFX

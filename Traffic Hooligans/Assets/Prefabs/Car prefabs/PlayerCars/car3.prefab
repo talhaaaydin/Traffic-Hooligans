@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 114260575235042394}
   - component: {fileID: 82830211360219216}
   - component: {fileID: 95933148949045654}
+  - component: {fileID: 114989722850146044}
   m_Layer: 0
   m_Name: car3
   m_TagString: Player
@@ -698,6 +699,25 @@ MonoBehaviour:
   MinRPM: 400
   EngineRPM: 0
   KontrolMesafesi: 3.2
+--- !u!114 &114989722850146044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976771962495408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff2c28452a38c048a5f633a50d1c9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  garajSahneIsmi: Garage
+  sprites:
+  - {fileID: 21300000, guid: a0161971adf6c2b43b05f4d6a886418c, type: 3}
+  - {fileID: 21300000, guid: c19469d2c5356c349918ea20cab123e6, type: 3}
+  - {fileID: 21300000, guid: 8c961f0d1d5f2ff44ad569c2481b0855, type: 3}
+  upgradeLevelSpeed: {fileID: 0}
+  upgradeLevelBrake: {fileID: 0}
+  upgradeLevelManevra: {fileID: 0}
 --- !u!146 &146577741535700886
 WheelCollider:
   m_ObjectHideFlags: 1

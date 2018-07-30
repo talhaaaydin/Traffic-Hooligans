@@ -24,10 +24,20 @@ public class ButtonScripts : MonoBehaviour {
 	}
 
 	void Update(){
-		carptim = GetComponent<theGodScript> ().theCar.GetComponent<CarControllerScript>().carptim;
-		if (carptim) {
-			skorMenu ();
+		if (SahneIsmi == anaSahneIsmi) {
+			carptim = GetComponent<theGodScript> ().theCar.GetComponent<CarControllerScript> ().carptim;
+			if (carptim) {
+				skorMenu ();
+			}
 		}
+	}
+
+	public void DeleteAllPlayerPrefs(){
+		PlayerPrefs.DeleteAll ();
+	}
+
+	public void UpgradeButtons(string ability){
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<carAbilities> ().Upgrade (ability);
 	}
 
 	public void pause(){
@@ -119,7 +129,7 @@ public class ButtonScripts : MonoBehaviour {
 	void Start(){
 		HangiSahnedeyiz ();
 		if (SahneIsmi == anaSahneIsmi) {
-			float currentValue = PlayerPrefs.GetFloat ("volume");;
+			float currentValue = PlayerPrefs.GetFloat ("volume",0);;
 			VolumeSlider.value = currentValue;
 			aMixer.SetFloat ("volume", currentValue);
 			carptim = GetComponent<theGodScript> ().theCar.GetComponent<CarControllerScript>().carptim;
