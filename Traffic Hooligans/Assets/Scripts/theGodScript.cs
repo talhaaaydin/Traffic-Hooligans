@@ -118,8 +118,8 @@ public class theGodScript : MonoBehaviour {
 			skorText.colorGradientPreset = seksen5ustu;
 		} 
 		skorText.text = skorPanelText.text = (Mathf.RoundToInt(skor)).ToString();
-		if (PlayerPrefs.GetInt ("skorBest", 0) < Mathf.RoundToInt (skor)) {
-			PlayerPrefs.SetInt ("skorBest", Mathf.RoundToInt (skor));
+		if (PlayerPrefs.GetFloat ("skorBest", 0) < Mathf.RoundToInt (skor)) {
+			PlayerPrefs.SetFloat ("skorBest", Mathf.RoundToInt (skor));
 		}
 
 		if (hiz * unitToKmH >= skorHiz) {
@@ -133,13 +133,13 @@ public class theGodScript : MonoBehaviour {
 		yuksekHizParasi = Mathf.RoundToInt(float.Parse (seksen5kmhustuValueText.text) * seksen5kmhUstuParaKatSayisi);
 		seksen5kmhUstuMoneyText.text = (yuksekHizParasi).ToString ();
 
-		if (PlayerPrefs.GetInt ("yuksekHizTimeBest", 0) < Mathf.RoundToInt (yuksekHizTime)) {
-			PlayerPrefs.SetInt ("yuksekHizTimeBest", Mathf.RoundToInt (yuksekHizTime));
+		if (PlayerPrefs.GetFloat ("yuksekHizTimeBest", 0) < Mathf.RoundToInt (yuksekHizTime)) {
+			PlayerPrefs.SetFloat ("yuksekHizTimeBest", Mathf.RoundToInt (yuksekHizTime));
 		}
 
 		toplamPara = Mathf.RoundToInt(yuksekHizParasi + gidilenYolParasi);
 		toplamMoneyText.text = toplamPara.ToString ();
-		PlayerPrefs.SetInt ("para", Mathf.RoundToInt((PlayerPrefs.GetInt("para", 0) + toplamPara)));
+		PlayerPrefs.SetFloat ("para", Mathf.RoundToInt((PlayerPrefs.GetFloat("para", 0) + toplamPara)));
 
 	}
 

@@ -580,6 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   garajSahneIsmi: Garage
+  myPrice: 2000
   sprites:
   - {fileID: 21300000, guid: a0161971adf6c2b43b05f4d6a886418c, type: 3}
   - {fileID: 21300000, guid: c19469d2c5356c349918ea20cab123e6, type: 3}
@@ -609,13 +610,13 @@ MonoBehaviour:
   carptim: 0
   ShiftingGear: {fileID: 7400000, guid: 0382e38c9b767d2489a181678cec45c7, type: 2}
   hiz: 0
-  manevraBecerisi: 1
+  manevraBecerisi: 0.6
   horizontalInput: 0
   acceleration: 20
   maxMotorForce: 3000
   brakeForce: 3000
   enKucukHiz: 7.5
-  enBuyukHiz: 30
+  enBuyukHiz: 35
   ShiftingGearNow: 0
   hizlaniyor: 0
   brakeTorque: 0

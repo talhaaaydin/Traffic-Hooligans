@@ -8,15 +8,16 @@ public class carAbilities : MonoBehaviour {
 	string gOName;
 	public string garajSahneIsmi = "Garage";
 	int hizUpgradeLevel, brakeUpgradeLevel, manevraUpgradeLevel;
+	public int myPrice;
 	private Button hizUpgradeButton, brakeUpgradeButton, manevraUpgradeButton;
 	public Sprite[] sprites;
 	[SerializeField]
 	private Image upgradeLevelSpeed, upgradeLevelBrake, upgradeLevelManevra;
-
+	GameObject garageManager;
 	// Use this for initialization
 	void Start () {
 		gOName = name;
-		if (SceneManager.GetActiveScene ().name == garajSahneIsmi) {
+		if (SceneManager.GetActiveScene ().name == garajSahneIsmi && PlayerPrefs.GetString(gOName,"satinAlinmadi") == "satinAlindi") {
 			hizUpgradeButton = GameObject.FindGameObjectWithTag ("hizUpgradeButton").GetComponent<Button> ();
 			brakeUpgradeButton = GameObject.FindGameObjectWithTag ("brakeUpgradeButton").GetComponent<Button> ();
 			manevraUpgradeButton = GameObject.FindGameObjectWithTag ("manevraUpgradeButton").GetComponent<Button> ();
@@ -26,6 +27,7 @@ public class carAbilities : MonoBehaviour {
 			upgradeLevelSpeed = GameObject.FindGameObjectWithTag ("upgradeLevelSpeed").GetComponent<Image> ();
 			upgradeLevelBrake = GameObject.FindGameObjectWithTag ("upgradeLevelBrake").GetComponent<Image> ();
 			upgradeLevelManevra = GameObject.FindGameObjectWithTag ("upgradeLevelManevra").GetComponent<Image> ();
+			garageManager = GameObject.FindGameObjectWithTag ("garageManager");
 		}
 
 	}
@@ -43,23 +45,23 @@ public class carAbilities : MonoBehaviour {
 			a = manevraUpgradeLevel;
 			break;
 		}
-		if (a <= 2) {
+		if (a <= 2 && PlayerPrefs.GetFloat ("para", 0) >= (a + 1) * 1000) {
 			PlayerPrefs.SetInt (gOName + ability, a + 1);
 			if (ability == "hiz") {
 				upgradeLevelSpeed.sprite = sprites [a];
-				Debug.Log (GetComponent<CarControllerScript> ().enBuyukHiz);
 				GetComponent<CarControllerScript> ().enBuyukHiz += 5;
-				Debug.Log (GetComponent<CarControllerScript> ().enBuyukHiz);
-				PlayerPrefs.SetFloat (gOName + ability+"value", GetComponent<CarControllerScript> ().enBuyukHiz);
+				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().enBuyukHiz);
 			} else if (ability == "brake") {
 				upgradeLevelBrake.sprite = sprites [a];
-				GetComponent<CarControllerScript> ().brakeForce += (500 - 99 *GetComponent<CarControllerScript>().brakeForce) / 100;
-				PlayerPrefs.SetFloat (gOName + ability+"value", GetComponent<CarControllerScript> ().brakeForce);
+				GetComponent<CarControllerScript> ().brakeForce += 500;
+				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().brakeForce);
 			} else if (ability == "manevra") {
 				upgradeLevelManevra.sprite = sprites [a];
-				GetComponent<CarControllerScript> ().manevraBecerisi += GetComponent<CarControllerScript> ().manevraBecerisi * 39 + 1;
-				PlayerPrefs.SetFloat (gOName + ability+"value", GetComponent<CarControllerScript> ().manevraBecerisi);
+				GetComponent<CarControllerScript> ().manevraBecerisi += 0.25f / 2;
+				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().manevraBecerisi);
 			}
+		} else {
+			garageManager.GetComponent<garageManager> ().paraYokPanel.SetActive (true);
 		}
 	}
 
@@ -69,7 +71,7 @@ public class carAbilities : MonoBehaviour {
 	}
 
 	void butonlariVeResimleriKontrolEt(){
-		if (SceneManager.GetActiveScene ().name == garajSahneIsmi) {
+		if (SceneManager.GetActiveScene ().name == garajSahneIsmi && PlayerPrefs.GetString(gOName, "satinAlinmadi") == "satinAlindi") {
 			hizUpgradeLevel = PlayerPrefs.GetInt (gOName + "hiz", 1);
 			brakeUpgradeLevel = PlayerPrefs.GetInt (gOName + "brake", 1);
 			manevraUpgradeLevel = PlayerPrefs.GetInt (gOName + "manevra", 1);

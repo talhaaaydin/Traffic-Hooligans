@@ -677,13 +677,13 @@ MonoBehaviour:
   carptim: 0
   ShiftingGear: {fileID: 7400000, guid: 0382e38c9b767d2489a181678cec45c7, type: 2}
   hiz: 0
-  manevraBecerisi: 1.5
+  manevraBecerisi: 0.5
   horizontalInput: 0
   acceleration: 20
   maxMotorForce: 3000
-  brakeForce: 3000
+  brakeForce: 2000
   enKucukHiz: 7.5
-  enBuyukHiz: 30
+  enBuyukHiz: 20
   ShiftingGearNow: 0
   hizlaniyor: 0
   brakeTorque: 0
