@@ -11,15 +11,5 @@ required for displaying ads.
   <uses-sdk android:minSdkVersion="14"
       android:targetSdkVersion="19" />
   <application>
-  <activity android:name="com.unity3d.player.UnityPlayerNativeActivity"
-   android:label="@string/app_name">
-   <intent-filter>
-     <action android:name="android.intent.action.MAIN" />
-     <category android:name="android.intent.category.LAUNCHER" />
-   </intent-filter>
-   <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
-   <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik"
-       android:value="true" />
-</activity>
   </application>
 </manifest>
