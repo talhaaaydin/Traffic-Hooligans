@@ -12,11 +12,15 @@ public class BotCarManager : MonoBehaviour {
 	private Vector3 Position, pos;
 	public int CreatedBotCars = 0;
 	public int limitCreatingBots = 3;
+	private float unitToKmH, skorHiz;
 	// Use this for initialization
 	void Start () {
 		BotCarParent = GameObject.FindGameObjectWithTag ("BotCarParent").transform;
 		PotantielCarLocations = GameObject.FindGameObjectWithTag ("PotansiyelArabaKonumları");
 		theCar = GameObject.FindGameObjectWithTag ("Player");
+		theGod = GameObject.FindGameObjectWithTag ("theGod");
+		unitToKmH = theGod.GetComponent<theGodScript> ().unitToKmH;
+		skorHiz = theGod.GetComponent<theGodScript> ().skorHiz;
 		StartCoroutine (BotCarRegulator ());
 	}
 
@@ -71,9 +75,11 @@ public class BotCarManager : MonoBehaviour {
 	}
 
 	IEnumerator BotCarRegulator(){
-		float hiz, enKucukHiz;
-		enKucukHiz = theCar.GetComponent<CarControllerScript> ().enKucukHiz;
-		hiz = theCar.GetComponent<CarControllerScript> ().hiz;
+		float hiz, enKucukHiz, enBuyukHiz;
+		CarControllerScript theCarS = theCar.GetComponent<CarControllerScript> ();
+		enKucukHiz = theCarS.enKucukHiz;
+		enBuyukHiz = theCarS.enBuyukHiz;
+		hiz = theCarS.hiz;
 
 		if (hiz >= enKucukHiz && Time.timeScale == 1) {
 			if (BotCarParent.childCount <= limitCreatingBots) {
@@ -85,12 +91,22 @@ public class BotCarManager : MonoBehaviour {
 
 
 		float delayTime;
-		if (theCar.GetComponent<CarControllerScript> ().hiz * 2.5f >= 50) {
-			delayTime = 1.5f;
-		} else if (theCar.GetComponent<CarControllerScript> ().hiz * 2.5f < 50 && theCar.GetComponent<CarControllerScript> ().hiz * 2.5f > 35) {
-			delayTime = 2f;
+		if (enBuyukHiz != skorHiz - 10) {
+			if (hiz * unitToKmH >= skorHiz || theCarS.hiz >= theCarS.enBuyukHiz) {
+				delayTime = 0.5f;
+			} else if (hiz * unitToKmH < skorHiz && hiz * unitToKmH > skorHiz - 10) {
+				delayTime = 1f;
+			} else {
+				delayTime = 1.5f;
+			}
 		} else {
-			delayTime = 3f;
+			if (hiz * unitToKmH >= skorHiz || theCarS.hiz >= theCarS.enBuyukHiz) {
+				delayTime = 0.5f;
+			} else if (hiz * unitToKmH < skorHiz && hiz * unitToKmH > skorHiz - 11) {
+				delayTime = 1f;
+			} else {
+				delayTime = 1.5f;
+			}
 		}
 		yield return new WaitForSecondsRealtime (delayTime);
 		StartCoroutine (BotCarRegulator ());

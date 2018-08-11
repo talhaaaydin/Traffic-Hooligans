@@ -7,7 +7,10 @@ public class CarControllerScript : MonoBehaviour {
 
 	public WheelCollider onSolW, onSagW, arkaSolW, arkaSagW;
 	public Transform onSolT, onSagT, arkaSolT, arkaSagT;
+	public GameObject arkaFarlar;
 	public bool carptim = false;
+
+	private GameObject theGod;
 
 	private Rigidbody rb;
 	private AudioSource audioS;
@@ -26,7 +29,8 @@ public class CarControllerScript : MonoBehaviour {
 	public float enBuyukHiz = 25f;
 
 	private bool frenYapabilme = false;
-	private bool gazBasili = false;
+	public bool gazBasili = false;
+	public bool frenBasili = false;
 	public bool ShiftingGearNow = false;
 	public bool hizlaniyor =false;
 
@@ -42,7 +46,7 @@ public class CarControllerScript : MonoBehaviour {
 	public float EngineRPM = 0f;
 
 	public float KontrolMesafesi = 3.2f;
-
+	public float SollamaMesafesi = 2.07f;
 
 	private void GearOperations(){
 		//motor rpm i bir tekerlegin rpm i ile geçerli vitesin vites oranını çarparak buluruz.
@@ -82,6 +86,35 @@ public class CarControllerScript : MonoBehaviour {
 			CurrentGear = GeciciVites;
 		} 
 
+	}
+
+	private void Sollama(){
+		RaycastHit hit, hit2;
+		int a = 0;
+		theGodScript theGodS = theGod.GetComponent<theGodScript>();
+		float unitToKmH = theGodS.unitToKmH;
+		float skorHiz = theGodS.skorHiz;
+		bool overtakeLeft = Physics.Raycast (transform.position, transform.TransformDirection (Vector3.left), out hit, SollamaMesafesi);
+		bool overtakeRight = Physics.Raycast (transform.position, transform.TransformDirection (Vector3.right), out hit2, SollamaMesafesi);
+		if (overtakeRight && hit2.transform.gameObject.CompareTag ("BotCar") && hiz * unitToKmH >= skorHiz) {
+			Debug.Log (hit2.distance + " right");
+			a = 1;
+			theGodS.sollamaGosterge.SetActive (true);
+		} else {
+			a = 0;
+			theGodS.sollamaGosterge.SetActive (false);
+		}
+		if (overtakeLeft && hit.transform.gameObject.CompareTag("BotCar") && hiz * unitToKmH >= skorHiz) {
+			Debug.Log (hit.distance + " left");
+			a = 1;
+			theGodS.sollamaGosterge.SetActive (true);
+		} else {
+			a = 0;
+			theGodS.sollamaGosterge.SetActive (false);
+		}
+
+		theGodS.yakinMakas += a;
+		theGodS.sollamaValueText.text = theGodS.yakinMakas.ToString ();
 	}
 
 	private void CarSound(){
@@ -179,14 +212,24 @@ public class CarControllerScript : MonoBehaviour {
 		}
 	}*/
 
-	public void Brake(bool basili){
-		if (basili && frenYapabilme) {
-			onSagW.brakeTorque = brakeForce;
-			onSolW.brakeTorque = brakeForce;
-			arkaSagW.brakeTorque = brakeForce;
-			arkaSolW.brakeTorque = brakeForce;
-			verticalInput = 0;
+	public void Brake(){
+		if (frenYapabilme) {
+			if (frenBasili) {
+				arkaFarlar.SetActive (true);
+				onSagW.brakeTorque = brakeForce;
+				onSolW.brakeTorque = brakeForce;
+				arkaSagW.brakeTorque = brakeForce;
+				arkaSolW.brakeTorque = brakeForce;
+				verticalInput = 0;
+			} else {
+				arkaFarlar.SetActive (false);
+				onSagW.brakeTorque = 0;
+				onSolW.brakeTorque = 0;
+				arkaSagW.brakeTorque = 0;
+				arkaSolW.brakeTorque = 0;
+			}
 		} else {
+			arkaFarlar.SetActive (false);
 			onSagW.brakeTorque = 0;
 			onSolW.brakeTorque = 0;
 			arkaSagW.brakeTorque = 0;
@@ -194,15 +237,6 @@ public class CarControllerScript : MonoBehaviour {
 		}
 	}
 
-	public void Gaz(bool basili){
-		if (basili) {
-			gazBasili = true;
-			hizlaniyor = true;
-		} else {
-			gazBasili = false;
-			hizlaniyor = false;
-		}
-	}
 
 	private void Accelerate(){
 		float motorForce = maxMotorForce / GearRatio[CurrentGear] * -verticalInput;
@@ -210,43 +244,55 @@ public class CarControllerScript : MonoBehaviour {
 		onSolW.motorTorque = motorForce;
 	}
 
-	private void otonomHizlanma(){
-		if (hiz < enKucukHiz) {
-			VerticalInputIncrease ();
-			onSagW.brakeTorque = 0;
-			onSolW.brakeTorque = 0;
-			arkaSagW.brakeTorque = 0;
-			arkaSolW.brakeTorque = 0;
+	private void verticalInputManager(){
+		if (hiz > enBuyukHiz) {
+			verticalInput = 0;
+			onSagW.motorTorque = 0;
+			onSolW.motorTorque = 0;
 		}
 
 		if (hiz < enKucukHiz && CurrentGear > 1) {
-			CurrentGear = 0;
 			onSagW.motorTorque = 0;
 			onSolW.motorTorque = 0;
+			CurrentGear = 0;
 		}
 
 		if (hiz < enKucukHiz && verticalInput < 0) {
 			verticalInput = 0;
 		}
 
-		if (verticalInput >-0.1 && hiz > enKucukHiz + 0.4) {
+		if (verticalInput > -0.3f && hiz > enKucukHiz + 0.3) {
 			VerticalInputDecrease ();
 		}
-	}
 
-	private void HizLimitleme(){
-		if (hiz > enBuyukHiz) {
-			verticalInput = 0;
-			onSagW.motorTorque = 0;
-			onSolW.motorTorque = 0;
+		if (!gazBasili) {
+			if (hiz < enKucukHiz) {
+				VerticalInputIncrease ();
+			}
+			hizlaniyor = false;
+		}
+
+		if (gazBasili) {
+			if (hiz <= enBuyukHiz) {
+				VerticalInputIncrease ();
+				if (hiz > enKucukHiz) {
+					hizlaniyor = true;
+				}
+			}
+
+		
 		}
 	}
 
 	private void BoolManager(){
-		if (hiz < enKucukHiz) {
+		if (hiz <= enKucukHiz) {
 			frenYapabilme = false;
 		} else {
 			frenYapabilme = true;
+		}
+
+		if (!gazBasili && hiz < enKucukHiz) {
+			hizlaniyor = false;
 		}
 
 		if (ShiftingGearNow) {
@@ -269,28 +315,33 @@ public class CarControllerScript : MonoBehaviour {
 		verticalInput = 0;
 		audioS = GetComponent<AudioSource> ();
 		carptim = false;
-
+		theGod = GameObject.FindGameObjectWithTag ("theGod");
 	}
 
 	void Update(){
+		//get input metodu x ekseninde hareket için gerekli olan yatay input girişini accelerometer yardımıyla belirler.
 		GetInput ();
+		//accelerate metodu on sol ve sag tekerleklere uygulanan motor torkunu ayarlar.
 		Accelerate ();
+		//bool manager metodu ile fren yapabilme boolunu hizin belirlenen en küçük hızdan büyük veya küçük olması koşulu ile bire veya sıfıra ayarlar.
 		BoolManager ();
-		HizLimitleme ();
-		if (gazBasili) {
-			VerticalInputIncrease ();
-		}
+		// 1 - hiz belirlenen en büyük hızdan büyük olduğu zamanlar vertical inputu, on sol ve on sag tekerleklerinin motor torkunu sıfıra eşitler.
+		// 2 - hiz belirlenen en küçük hızdan düşük olduğu zamanlar geçerli vites 1 den büyükse on sol ve sag tekerleklere uygulanan motor torkunu sıfırlar ve geçerli vitesi 0 indirir.
+		// 3 - hiz belirlenen en küçük hızdan düşük olduğu zamanlar vertical input sıfırdan küçükse vertical inputu 0 a eşitler.
+		// 4 - hiz belirlenen en küçük hızın 0.3 fazlasından büyük olduğu zamanlar ve vertical inputun -0.3 den büyük olduğu zamanlar vertical inputu yavaşça küçültür.
+		// 5 - eğer gaz butonuna basılı değil ve hiz belirlenen en küçük hızdan düşükse vertical inputu yavaşça büyültür.
+		verticalInputManager ();
+		Brake ();
 		CarSound ();
 		AnimationController ();
 		hiz = rb.velocity.magnitude;
-
+		Sollama ();
 	}
 
 	void FixedUpdate(){
 		Steering ();
 		CarRotationFix ();
 		UpdateWheelPoses ();
-		otonomHizlanma();
 		GearOperations ();
 
 		brakeTorque = onSagW.brakeTorque;

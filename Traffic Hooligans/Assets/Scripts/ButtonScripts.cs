@@ -12,12 +12,13 @@ public class ButtonScripts : MonoBehaviour {
 	public Button pauseButton; 
 	public GameObject pausePanel, settingsPanel, hizGosterge, yolGosterge, skorGosterge, yuksekHizGosterge, buttons, skorPanel;
 	public AudioMixer aMixer;
+	public TMP_Dropdown qualityDropdown;
 	[SerializeField]
 	public bool carptim;
 	public Slider VolumeSlider;
 	private AudioSource[] audioSource;
 	public TextMeshProUGUI skorValueText;
-	public string anaSahneIsmi = "mainScene";
+	public string anaSahneIsmi = "mainScene", garajSahneIsmi = "Garage";
 
 	private void HangiSahnedeyiz(){
 		SahneIsmi = SceneManager.GetActiveScene ().name;
@@ -100,6 +101,7 @@ public class ButtonScripts : MonoBehaviour {
 	}
 
 	public void AgainTheScene(){
+		Time.timeScale = 1;
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 	}
 
@@ -126,13 +128,30 @@ public class ButtonScripts : MonoBehaviour {
 		PlayerPrefs.SetFloat ("volume", volume);
 	}
 
+	public void SetQuality(int qualityIndex){
+		QualitySettings.SetQualityLevel (qualityIndex);
+		PlayerPrefs.SetInt ("quality", qualityIndex);
+		Time.timeScale = 1;
+	}
+
 	void Start(){
 		HangiSahnedeyiz ();
 		if (SahneIsmi == anaSahneIsmi) {
-			float currentValue = PlayerPrefs.GetFloat ("volume",0);;
+			float currentValue = PlayerPrefs.GetFloat ("volume", 0);
 			VolumeSlider.value = currentValue;
 			aMixer.SetFloat ("volume", currentValue);
-			carptim = GetComponent<theGodScript> ().theCar.GetComponent<CarControllerScript>().carptim;
+			int currentQuality = PlayerPrefs.GetInt ("quality", 1);
+			QualitySettings.SetQualityLevel (currentQuality);
+			Time.timeScale = 1;
+			carptim = GetComponent<theGodScript> ().theCar.GetComponent<CarControllerScript> ().carptim;
+		} else if (SahneIsmi == garajSahneIsmi) {
+			float currentValue = PlayerPrefs.GetFloat ("volume",0);
+			VolumeSlider.value = currentValue;
+			aMixer.SetFloat ("volume", currentValue);
+			int currentQuality = PlayerPrefs.GetInt ("quality", 1);
+			qualityDropdown.value = currentQuality;
+			QualitySettings.SetQualityLevel (currentQuality);
+			Time.timeScale = 1;
 		}
 	}
 

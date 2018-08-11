@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-
 public class garageManager : MonoBehaviour {
 
 	public GameObject[] playerCarPrefabs;
@@ -14,7 +13,7 @@ public class garageManager : MonoBehaviour {
 	public Quaternion quat;
 	public Button nextButton, beforeButton, playButton, buyButton;
 	public TextMeshProUGUI hizValue, frenValue, manevraValue, carPriceText;
-	public TextMeshProUGUI moneyText, scoreText;
+	public TextMeshProUGUI moneyText, scoreText, kacParaLazim;
 	private GameObject kilimler;
 	public float rotateSpeed = 10f;
 	bool kilimleriDondurelimMi = true;
@@ -63,13 +62,14 @@ public class garageManager : MonoBehaviour {
 			LockOrUnlockedCar (theCar.name);
 		} else {
 			paraYokPanel.SetActive (true);
+			kacParaLazim.text = (price - PlayerPrefs.GetFloat ("para", 0)).ToString () + " PARA LAZIM!";
 		}
 	}
 
 	void Update(){
 		kilimleriDondur (kilimleriDondurelimMi);
 		TextSettings ();
-		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz)).ToString());
+		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz * theCar.GetComponent<CarControllerScript>().maxMotorForce / 6000)).ToString());
 		frenValue.SetText (((int)(theCar.GetComponent<CarControllerScript>().brakeForce / 100)).ToString());
 		manevraValue.SetText (Mathf.RoundToInt(theCar.GetComponent<CarControllerScript> ().manevraBecerisi * 40).ToString());
 		
@@ -86,7 +86,7 @@ public class garageManager : MonoBehaviour {
 		kilimleriDondurelimMi = true;
 		string theName = theCar.name;
 
-		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz)).ToString());
+		hizValue.SetText (((int)(theCar.GetComponent<CarControllerScript> ().enBuyukHiz * theCar.GetComponent<CarControllerScript>().maxMotorForce  / 6000)).ToString());
 		frenValue.SetText (Mathf.RoundToInt(theCar.GetComponent<CarControllerScript>().brakeForce / 100).ToString());
 		manevraValue.SetText (Mathf.RoundToInt(theCar.GetComponent<CarControllerScript> ().manevraBecerisi * 40).ToString());
 
@@ -182,6 +182,6 @@ public class garageManager : MonoBehaviour {
 
 	void TextSettings(){
 		moneyText.text = PlayerPrefs.GetFloat ("para", 0).ToString();
-		scoreText.text = "En yüksek: " + PlayerPrefs.GetFloat ("skorBest", 0).ToString ();
+		scoreText.text = "En yUksek: " + PlayerPrefs.GetFloat ("skorBest", 0).ToString ();
 	}
 }

@@ -56,6 +56,10 @@ MonoBehaviour:
   - {fileID: 1301707293822580, guid: dd3216cda590b3d40882a08f5bc6453e, type: 2}
   - {fileID: 1806881745443890, guid: 9192ee3915f9635419b70644a6df73c7, type: 2}
   - {fileID: 1169614550044582, guid: 0d4607f73e791b3419d8814653eaf7c7, type: 2}
+  - {fileID: 1294631613619172, guid: 79c613e2f8a4c9d4d8fef8671d747417, type: 2}
+  - {fileID: 1248487573845172, guid: 76df851e5bd664240af5787fe623edd5, type: 2}
+  - {fileID: 1100809937461578, guid: 6131f38078488ce4fb3f082ccad71c96, type: 2}
+  - {fileID: 1343443825222018, guid: 540ee59d2e8a9e54d85bb52eebc19a64, type: 2}
   theCar: {fileID: 0}
   theGod: {fileID: 0}
   CreatedBotCars: 0

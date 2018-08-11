@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class carAbilities : MonoBehaviour {
 	string gOName;
@@ -14,6 +15,9 @@ public class carAbilities : MonoBehaviour {
 	[SerializeField]
 	private Image upgradeLevelSpeed, upgradeLevelBrake, upgradeLevelManevra;
 	GameObject garageManager;
+	[SerializeField]
+	private TextMeshProUGUI kacParaLazim;
+	public int ozellikGelistirmeUcreti = 400;
 	// Use this for initialization
 	void Start () {
 		gOName = name;
@@ -45,11 +49,12 @@ public class carAbilities : MonoBehaviour {
 			a = manevraUpgradeLevel;
 			break;
 		}
-		if (a <= 2 && PlayerPrefs.GetFloat ("para", 0) >= (a + 1) * 1000) {
+		if (a <= 2 && PlayerPrefs.GetFloat ("para", 0) >= (a + 1) * ozellikGelistirmeUcreti) {
 			PlayerPrefs.SetInt (gOName + ability, a + 1);
 			if (ability == "hiz") {
 				upgradeLevelSpeed.sprite = sprites [a];
-				GetComponent<CarControllerScript> ().enBuyukHiz += 5;
+				GetComponent<CarControllerScript> ().enBuyukHiz += 2;
+				GetComponent<CarControllerScript> ().maxMotorForce += 100;
 				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().enBuyukHiz);
 			} else if (ability == "brake") {
 				upgradeLevelBrake.sprite = sprites [a];
@@ -60,8 +65,12 @@ public class carAbilities : MonoBehaviour {
 				GetComponent<CarControllerScript> ().manevraBecerisi += 0.25f / 2;
 				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().manevraBecerisi);
 			}
+
+			PlayerPrefs.SetFloat ("para", PlayerPrefs.GetFloat ("para") - (a + 1) * ozellikGelistirmeUcreti);
 		} else {
 			garageManager.GetComponent<garageManager> ().paraYokPanel.SetActive (true);
+			kacParaLazim = garageManager.GetComponent<garageManager> ().kacParaLazim;
+			kacParaLazim.SetText (((a + 1) * ozellikGelistirmeUcreti - PlayerPrefs.GetFloat("para", 0)).ToString() + " para lazım!");
 		}
 	}
 

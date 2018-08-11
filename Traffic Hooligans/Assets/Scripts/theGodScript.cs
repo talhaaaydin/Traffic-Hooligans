@@ -11,32 +11,37 @@ public class theGodScript : MonoBehaviour {
 	public GameObject[] carPrefabs;
 	public GameObject roadManagerP, BotCarCreatorP, potCarLocP;
 	public GameObject theCar, BotCarCreator, MainCamera;
-	public GameObject Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge;
+	public GameObject Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge, sollamaGosterge;
 	private GameObject PotansiyelArabaKonumları;
-	public TextMeshProUGUI speedText, distanceText, skorText, skorPanelText, katedilenMesafeValueText, katedilenMesafeMoneyText, yakınMakasValueText, yakınMakasMoneyText;
-	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, toplamMoneyText;
+	public TextMeshProUGUI speedText, distanceText, skorText, skorPanelText, katedilenMesafeValueText, katedilenMesafeMoneyText, yakinMakasValueText, yakinMakasMoneyText;
+	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, sollamaValueText, toplamMoneyText;
 
 	public TMP_ColorGradient seksen5alti, seksen5ustu;
 
 	private Vector3 startPositionPlayer = new Vector3 (0, 0.85f, 0);
 	public float posPOTOffsetZ = 20.08f;
 	private float distance, hiz, yuksekHizTime;
+	public float yakinMakas = 0;
 	public float skor;
 	public float skorHiz = 85f;
-	public float katedilenMesafeParaKatSayisi, yakınMakasMesafeParaKatSayisi, seksen5kmhUstuParaKatSayisi;
+	public float katedilenMesafeParaKatSayisi, yakinMakasMesafeParaKatSayisi, seksen5kmhUstuParaKatSayisi;
 	private bool hizlaniyor;
 	public float unitToKmH = 10 / 3;
+
+	public float gidilenYolParasi = 0, yuksekHizParasi = 0, yakinMakasParasi = 0, toplamPara = 0;
 
 	// Use this for initialization
 	void Start () {
 		skor = distance = hiz = yuksekHizTime = 0;
-		createCar (Random.Range (0, carPrefabs.Length));
+		int prefabIndex = PlayerPrefs.GetInt ("theCarIndex", 0);
+		createCar (prefabIndex);
 		createManagers ();
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		butonaAta ();
 		audioS = GetComponent<AudioSource> ();
 		distance = 0;
 		Time.timeScale = 1;
+		yakinMakas = 0;
 	}
 
 	void createCar(int prefabIndex){
@@ -77,7 +82,6 @@ public class theGodScript : MonoBehaviour {
 	}
 
 	void TextSettings(){
-		float gidilenYolParasi = 0, yuksekHizParasi = 0, toplamPara = 0; 
 
 		//hiz göstergesi
 		hiz = theCar.GetComponent<Rigidbody> ().velocity.magnitude;
@@ -88,9 +92,22 @@ public class theGodScript : MonoBehaviour {
 		distance += gidilenYolValue2;
 		distanceText.SetText ((distance).ToString ("F1") );
 		//skor panelindeki gidilen toplam yol
-		katedilenMesafeValueText.SetText (distanceText.text);
-		gidilenYolParasi = (Mathf.RoundToInt(float.Parse (katedilenMesafeValueText.text)) * katedilenMesafeParaKatSayisi);
-		katedilenMesafeMoneyText.text = (gidilenYolParasi).ToString ();
+		katedilenMesafeValueText.SetText ((distance).ToString ("F1"));
+		if (skor > 0) {
+			gidilenYolParasi = (Mathf.RoundToInt (distance * katedilenMesafeParaKatSayisi));
+			katedilenMesafeMoneyText.text = (gidilenYolParasi).ToString ();
+		} else {
+			katedilenMesafeMoneyText.text = "0";
+		}
+
+		yakinMakasValueText.SetText (((int)(yakinMakas)).ToString());
+		if (skor > 0) {
+			yakinMakasParasi = Mathf.RoundToInt (yakinMakas * yakinMakasMesafeParaKatSayisi);
+			yakinMakasMoneyText.text = yakinMakasParasi.ToString ();
+		} else {
+			yakinMakasMoneyText.text = "0";
+		}
+
 
 		//arabamız hızlandığı zamanlar puan artışı olacak.
 		hizlaniyor = theCar.GetComponent<CarControllerScript> ().hizlaniyor;
@@ -130,16 +147,19 @@ public class theGodScript : MonoBehaviour {
 		}
 
 		yuksekHizValueText.text = seksen5kmhustuValueText.text = (Mathf.RoundToInt(yuksekHizTime)).ToString ();
-		yuksekHizParasi = Mathf.RoundToInt(float.Parse (seksen5kmhustuValueText.text) * seksen5kmhUstuParaKatSayisi);
-		seksen5kmhUstuMoneyText.text = (yuksekHizParasi).ToString ();
+		if (skor > 0) {
+			yuksekHizParasi = Mathf.RoundToInt (yuksekHizTime * seksen5kmhUstuParaKatSayisi);
+			seksen5kmhUstuMoneyText.text = (yuksekHizParasi).ToString ();
+		} else {
+			seksen5kmhUstuMoneyText.text = "0";
+		}
+
+		sollamaValueText.colorGradientPreset = seksen5ustu;
 
 		if (PlayerPrefs.GetFloat ("yuksekHizTimeBest", 0) < Mathf.RoundToInt (yuksekHizTime)) {
 			PlayerPrefs.SetFloat ("yuksekHizTimeBest", Mathf.RoundToInt (yuksekHizTime));
 		}
 
-		toplamPara = Mathf.RoundToInt(yuksekHizParasi + gidilenYolParasi);
-		toplamMoneyText.text = toplamPara.ToString ();
-		PlayerPrefs.SetFloat ("para", Mathf.RoundToInt((PlayerPrefs.GetFloat("para", 0) + toplamPara)));
 
 	}
 
@@ -151,16 +171,18 @@ public class theGodScript : MonoBehaviour {
 
 	public void butonGizle(){
 		EngineStartbutton.SetActive (false);
+		Gazbutton.SetActive (true);
 		Frenbutton.SetActive (true);
 		theCar.GetComponent<CarControllerScript> ().enabled = true;
 	}
 
 	public void Gaz(bool basili){
-		theCar.GetComponent<CarControllerScript> ().Gaz(basili);
+		theCar.GetComponent<CarControllerScript> ().gazBasili = basili;
+	
 	}
 
 	public void Brake(bool basili){
-		theCar.GetComponent<CarControllerScript> ().Brake (basili);
+		theCar.GetComponent<CarControllerScript> ().frenBasili = basili;
 	}
 
 	void ArabaKonumlarıTransformFix(){

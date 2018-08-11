@@ -20,6 +20,7 @@ TagManager:
   - upgradeLevelBrake
   - upgradeLevelManevra
   - garageManager
+  - kacParaLazimText
   layers:
   - Default
   - TransparentFX

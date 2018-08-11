@@ -644,13 +644,13 @@ MonoBehaviour:
   enKucukHiz: 7
   onumdekininHizi: 0
   maxMotorForce: 4000
-  brakeForce: 6000
+  brakeForce: 9000
   acceleration: 20
   VerticalInputDecreaseKatSayi: 1
   "guvenliUzakl\u0131k": 35
   "mevcutUzakl\u0131k": 0
   "riskliUzakl\u0131k": 25
-  "gozlemlemeUzakl\u0131g\u0131": 60
+  "gozlemlemeUzakl\u0131g\u0131": 45
   motorTorque: 0
   brakeTorque: 0
 --- !u!146 &146016093576038914
