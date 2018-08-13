@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1839291018375008}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1839291018375008
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4644975195701940}
   - component: {fileID: 114353313381245910}
@@ -30,7 +30,7 @@ GameObject:
 --- !u!4 &4644975195701940
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839291018375008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -43,7 +43,7 @@ Transform:
 --- !u!114 &114353313381245910
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839291018375008}
   m_Enabled: 1
@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 1248487573845172, guid: 76df851e5bd664240af5787fe623edd5, type: 2}
   - {fileID: 1100809937461578, guid: 6131f38078488ce4fb3f082ccad71c96, type: 2}
   - {fileID: 1343443825222018, guid: 540ee59d2e8a9e54d85bb52eebc19a64, type: 2}
+  - {fileID: 1922182974090162, guid: 03a73faf8ff0b4d43b78e498a7c4f22d, type: 2}
   theCar: {fileID: 0}
   theGod: {fileID: 0}
   CreatedBotCars: 0

@@ -14,7 +14,6 @@ public class CarControllerScript : MonoBehaviour {
 
 	private Rigidbody rb;
 	private AudioSource audioS;
-	public AnimationClip ShiftingGear;
 	//diğer araçlar tarafından kontrol edildiği için public olması gerekir.
 	public float hiz, manevraBecerisi;
 
@@ -31,7 +30,6 @@ public class CarControllerScript : MonoBehaviour {
 	private bool frenYapabilme = false;
 	public bool gazBasili = false;
 	public bool frenBasili = false;
-	public bool ShiftingGearNow = false;
 	public bool hizlaniyor =false;
 
 	public float brakeTorque, motorTorque;
@@ -68,8 +66,6 @@ public class CarControllerScript : MonoBehaviour {
 					break;
 				}
 			}
-			//shifting gear now animasyon koşuludur. vites değiştirdiğimiz için küçük bir animasyon oynatılır.
-			ShiftingGearNow = true;
 			//ve bulduğumuz vites geçerli vitesimiz olur.
 			CurrentGear = GeciciVites;
 		} 
@@ -82,7 +78,6 @@ public class CarControllerScript : MonoBehaviour {
 					break;
 				}
 			}
-			ShiftingGearNow = true;
 			CurrentGear = GeciciVites;
 		} 
 
@@ -124,13 +119,6 @@ public class CarControllerScript : MonoBehaviour {
 		}
 	}
 
-	private void AnimationController(){
-		// belirlenen en küçük hıza ulaşıncaya kadar vites değiştirilse de hissettirilmesini istemiyoruz o yüzden hizimiz sadece belirlenen 
-		// en küçük hızdan daha büyük olduğu zamanlar animator daki animasyon koşulunu burada viteslerle değiştirdiğimiz koşul değişkenine eşitliyoruz.
-		if (hiz > enKucukHiz) {
-			GetComponent<Animator> ().SetBool ("ShiftingGearNow", ShiftingGearNow);
-		}
-	}
 
 	private void GetInput(){
 		//Accelerometerden X yönündeki alınan değer.
@@ -160,7 +148,7 @@ public class CarControllerScript : MonoBehaviour {
 	private void CarRotationFix(){
 		//arabamızın rotasyon değerlerini tek değiştiren vites değiştirme animasyonumuz olduğundan animasyon koşulu 1 değerindeyken
 		//rotasyon değerlerini rahat bırakıyoruz.
-		if (!ShiftingGearNow) {
+
 			//geçici bir quaternion oluşturarak bunu rotasyon değerlerimize eşitliyoruz.
 			Quaternion quat = transform.rotation;
 			//z ve y değerlerini 0 ve 180 e eşitliyoruz. x değerine karışmıyoruz çünkü onu Steering metodumuzda -7 ve 7 arasına
@@ -169,7 +157,7 @@ public class CarControllerScript : MonoBehaviour {
 			quat.y = 180;
 			//ve rotasyon değerlerimizi geçici quaterniona eşitledik.
 			transform.rotation = quat;
-		}
+
 	}
 
 	//wheelcolliderlerımız motoru ve freni kontrol eder.
@@ -295,13 +283,6 @@ public class CarControllerScript : MonoBehaviour {
 			hizlaniyor = false;
 		}
 
-		if (ShiftingGearNow) {
-			Invoke ("ShiftingGearNowOff", ShiftingGear.length);
-		}
-	}
-	
-	private void ShiftingGearNowOff(){
-		ShiftingGearNow = false;
 	}
 
 	void OnCollisionEnter(Collision coll){
@@ -333,7 +314,6 @@ public class CarControllerScript : MonoBehaviour {
 		verticalInputManager ();
 		Brake ();
 		CarSound ();
-		AnimationController ();
 		hiz = rb.velocity.magnitude;
 		Sollama ();
 	}

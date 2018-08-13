@@ -909,6 +909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51a7c51ad1237f4f8e20997699c94d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "GarajSahneIsm\u0131": Garage
+  MoneyIsIncreasing: {fileID: 0}
 --- !u!114 &224222526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6840,7 +6842,7 @@ Prefab:
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: katedilenMesafeParaKatSayisi
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
@@ -6855,7 +6857,7 @@ Prefab:
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: seksen5kmhUstuParaKatSayisi
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
@@ -6903,7 +6905,7 @@ Prefab:
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: yakinMakasMesafeParaKatSayisi
-      value: 2.7
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}

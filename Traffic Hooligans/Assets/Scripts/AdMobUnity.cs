@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AdMobUnity : MonoBehaviour {
 
 	InterstitialAd interstitial;
 	RewardBasedVideoAd rewardBasedVideo;
+	public string GarajSahneIsmı = "Garage";
+	public GameObject MoneyIsIncreasing;
 
 	// Use this for initialization
 	void Start () {
@@ -74,9 +78,25 @@ public class AdMobUnity : MonoBehaviour {
 		{
 		string type = args.Type;
 		double amount = args.Amount;
+
+		TextMeshProUGUI reklamOduluText = new TextMeshProUGUI();
+			reklamOduluText = MoneyIsIncreasing.transform.GetChild (1).transform.gameObject.GetComponent<TextMeshProUGUI> ();
+			PlayerPrefs.SetFloat ("para", (float)amount + PlayerPrefs.GetFloat ("para", 0));
+
+			MoneyIsIncreasing.SetActive (true);
+			Invoke ("MoneyIsIncreasingOff", MoneyIsIncreasing.transform.GetChild (0).transform.gameObject.GetComponent<Animation> ().clip.length);
+			
+
 		MonoBehaviour.print(
 		"HandleRewardBasedVideoRewarded event received for "
 		+ amount.ToString() + " " + type);
+		reklamOduluText.text = "+" + amount.ToString ();
+		}
+
+		void MoneyIsIncreasingOff(){
+			MoneyIsIncreasing.SetActive (false);
+			
+
 		}
 
 		public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)
@@ -101,6 +121,7 @@ public class AdMobUnity : MonoBehaviour {
 		}
 
 		public void ShowRewardAd(){
+		RequestRewardBasedVideo ();
 		if (rewardBasedVideo.IsLoaded()) {
 		rewardBasedVideo.Show();
 		}
@@ -169,6 +190,7 @@ public class AdMobUnity : MonoBehaviour {
 		}
 
 		public void ShowInterstitialAd(){
+		RequestInterstitial ();
 		if (interstitial.IsLoaded ()) {
 		interstitial.Show ();
 		}
