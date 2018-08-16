@@ -55,6 +55,7 @@ public class carAbilities : MonoBehaviour {
 				upgradeLevelSpeed.sprite = sprites [a];
 				GetComponent<CarControllerScript> ().enBuyukHiz += 2;
 				GetComponent<CarControllerScript> ().maxMotorForce += 100;
+				PlayerPrefs.SetFloat (gOName + "motorvalue", GetComponent<CarControllerScript> ().maxMotorForce);
 				PlayerPrefs.SetFloat (gOName + ability + "value", GetComponent<CarControllerScript> ().enBuyukHiz);
 			} else if (ability == "brake") {
 				upgradeLevelBrake.sprite = sprites [a];
@@ -114,11 +115,14 @@ public class carAbilities : MonoBehaviour {
 	}
 
 	void OzellikleriGecir(){
-		float enBuyukHiz, brakeForce, manevraBecerisi;
+		float enBuyukHiz, maxMotorForce, brakeForce, manevraBecerisi;
 
+		maxMotorForce = PlayerPrefs.GetFloat (gOName + "motorvalue", GetComponent<CarControllerScript> ().maxMotorForce); 
 		enBuyukHiz = PlayerPrefs.GetFloat (gOName + "hizvalue", GetComponent<CarControllerScript>().enBuyukHiz);
 		brakeForce = PlayerPrefs.GetFloat (gOName + "brakevalue", GetComponent<CarControllerScript>().brakeForce);
 		manevraBecerisi = PlayerPrefs.GetFloat (gOName + "manevravalue", GetComponent<CarControllerScript>().manevraBecerisi);
+
+		GetComponent<CarControllerScript> ().maxMotorForce = maxMotorForce;
 		GetComponent<CarControllerScript> ().enBuyukHiz = enBuyukHiz;
 		GetComponent<CarControllerScript> ().brakeForce = brakeForce;
 		GetComponent<CarControllerScript> ().manevraBecerisi = manevraBecerisi;

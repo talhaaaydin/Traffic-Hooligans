@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
@@ -95,8 +96,6 @@ public class AdMobUnity : MonoBehaviour {
 
 		void MoneyIsIncreasingOff(){
 			MoneyIsIncreasing.SetActive (false);
-			
-
 		}
 
 		public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)
@@ -198,3 +197,4 @@ public class AdMobUnity : MonoBehaviour {
 	
 
 }
+*/

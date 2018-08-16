@@ -7,7 +7,7 @@ public class toplamPara : MonoBehaviour {
 
 	private theGodScript theGodS;
 	public TextMeshProUGUI toplamParaValue;
-	private AdMobUnity adMobS;
+	private UnityAds unityAdS;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class toplamPara : MonoBehaviour {
 		kacKereOynandi = PlayerPrefs.GetInt ("kacKereOynandi", 0);
 		kacKereOynandi++;
 		PlayerPrefs.SetInt ("kacKereOynandi", kacKereOynandi);
-		adMobS = GetComponent<AdMobUnity> ();
+		unityAdS = GetComponent<UnityAds> ();
 		Reklam ();
 	}
 
@@ -30,7 +30,7 @@ public class toplamPara : MonoBehaviour {
 	void Reklam(){
 		int kacKereOynandi = PlayerPrefs.GetInt ("kacKereOynandi", 0);
 		if (kacKereOynandi != 0 && kacKereOynandi % 3 == 0) {
-			adMobS.ShowInterstitialAd ();
+			unityAdS.ShowInterstitialAd ();
 		}
 	}
 

@@ -10,9 +10,11 @@ public class ButtonScripts : MonoBehaviour {
 	[SerializeField]
 	private string SahneIsmi;
 	public Button pauseButton; 
-	public GameObject pausePanel, settingsPanel, hizGosterge, yolGosterge, skorGosterge, yuksekHizGosterge, buttons, skorPanel;
+	public GameObject pausePanel, settingsPanel, hizGosterge, yolGosterge, skorGosterge, yuksekHizGosterge, buttons, skorPanel, loadingPanel;
+	public Slider loadingSlider;
 	public AudioMixer aMixer;
 	public TMP_Dropdown qualityDropdown;
+	AsyncOperation async;
 	[SerializeField]
 	public bool carptim;
 	public Slider VolumeSlider;
@@ -106,7 +108,26 @@ public class ButtonScripts : MonoBehaviour {
 	}
 
 	public void GoToGarage(){
-		SceneManager.LoadScene ("Garage");
+		pausePanel.SetActive (false);
+		StartCoroutine (LoadingScreen ());
+
+	}
+
+	IEnumerator LoadingScreen(){
+		loadingPanel.SetActive (true);
+		async = SceneManager.LoadSceneAsync (garajSahneIsmi);
+		async.allowSceneActivation = false;
+
+		while (!async.isDone) {
+			loadingSlider.value = async.progress;
+
+			if (async.progress == 0.9f) {
+				loadingSlider.value = 1;
+				async.allowSceneActivation = true;
+			}
+			yield return null;
+		}
+
 	}
 
 	public void Settings(){

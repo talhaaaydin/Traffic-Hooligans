@@ -7,6 +7,7 @@ using TMPro;
 
 public class theGodScript : MonoBehaviour {
 
+	public AudioClip[] carstart;
 	private AudioSource audioS;
 	public GameObject[] carPrefabs;
 	public GameObject roadManagerP, BotCarCreatorP, potCarLocP;
@@ -165,6 +166,7 @@ public class theGodScript : MonoBehaviour {
 
 	void EngineStart(){
 		EngineStartbutton.GetComponent<Button> ().onClick.RemoveListener (EngineStart);
+		audioS.clip = carstart[PlayerPrefs.GetInt ("theCarIndex", 0)];
 		audioS.Play ();
 		Invoke ("butonGizle", audioS.clip.length);
 	}
