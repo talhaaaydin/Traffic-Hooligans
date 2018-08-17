@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class carAbilities : MonoBehaviour {
-	string gOName;
+	public string gOName;
 	public string garajSahneIsmi = "Garage";
 	int hizUpgradeLevel, brakeUpgradeLevel, manevraUpgradeLevel;
 	public int myPrice;
@@ -20,7 +20,7 @@ public class carAbilities : MonoBehaviour {
 	public int ozellikGelistirmeUcreti = 400;
 	// Use this for initialization
 	void Start () {
-		gOName = name;
+		gOName = this.gameObject.name;
 		if (SceneManager.GetActiveScene ().name == garajSahneIsmi && PlayerPrefs.GetString(gOName,"satinAlinmadi") == "satinAlindi") {
 			hizUpgradeButton = GameObject.FindGameObjectWithTag ("hizUpgradeButton").GetComponent<Button> ();
 			brakeUpgradeButton = GameObject.FindGameObjectWithTag ("brakeUpgradeButton").GetComponent<Button> ();
@@ -81,37 +81,49 @@ public class carAbilities : MonoBehaviour {
 	}
 
 	void butonlariVeResimleriKontrolEt(){
-		if (SceneManager.GetActiveScene ().name == garajSahneIsmi && PlayerPrefs.GetString(gOName, "satinAlinmadi") == "satinAlindi") {
-			hizUpgradeLevel = PlayerPrefs.GetInt (gOName + "hiz", 1);
-			brakeUpgradeLevel = PlayerPrefs.GetInt (gOName + "brake", 1);
-			manevraUpgradeLevel = PlayerPrefs.GetInt (gOName + "manevra", 1);
-			if (hizUpgradeLevel <= 2) {
-				hizUpgradeButton.gameObject.SetActive (true);
-				hizUpgradeButton.enabled = true;
-			} else {
-				hizUpgradeButton.gameObject.SetActive (false);
-				hizUpgradeButton.enabled = false;
-			}	
-			if (brakeUpgradeLevel <= 2) {
-				brakeUpgradeButton.gameObject.SetActive (true);
-				brakeUpgradeButton.enabled = true;
-			} else {
-				brakeUpgradeButton.gameObject.SetActive (false);
-				brakeUpgradeButton.enabled = false;
-			}
+		if (SceneManager.GetActiveScene ().name == garajSahneIsmi) {
+			upgradeLevelSpeed = GameObject.FindGameObjectWithTag ("upgradeLevelSpeed").GetComponent<Image> ();
+			upgradeLevelBrake = GameObject.FindGameObjectWithTag ("upgradeLevelBrake").GetComponent<Image> ();
+			upgradeLevelManevra = GameObject.FindGameObjectWithTag ("upgradeLevelManevra").GetComponent<Image> ();
 
-			if (manevraUpgradeLevel <= 2) {
-				manevraUpgradeButton.gameObject.SetActive (true);
-				manevraUpgradeButton.enabled = true;
-			} else {
-				manevraUpgradeButton.gameObject.SetActive (false);
-				manevraUpgradeButton.enabled = false;
+
+			if (PlayerPrefs.GetString (gOName, "satinAlinmadi") == "satinAlindi") {
+				hizUpgradeLevel = PlayerPrefs.GetInt (gOName + "hiz", 1);
+				brakeUpgradeLevel = PlayerPrefs.GetInt (gOName + "brake", 1);
+				manevraUpgradeLevel = PlayerPrefs.GetInt (gOName + "manevra", 1);
+
+
+				if (hizUpgradeLevel <= 2) {
+					hizUpgradeButton.gameObject.SetActive (true);
+					hizUpgradeButton.enabled = true;
+				} else {
+					hizUpgradeButton.gameObject.SetActive (false);
+					hizUpgradeButton.enabled = false;
+				}	
+				if (brakeUpgradeLevel <= 2) {
+					brakeUpgradeButton.gameObject.SetActive (true);
+					brakeUpgradeButton.enabled = true;
+				} else {
+					brakeUpgradeButton.gameObject.SetActive (false);
+					brakeUpgradeButton.enabled = false;
+				}
+
+				if (manevraUpgradeLevel <= 2) {
+					manevraUpgradeButton.gameObject.SetActive (true);
+					manevraUpgradeButton.enabled = true;
+				} else {
+					manevraUpgradeButton.gameObject.SetActive (false);
+					manevraUpgradeButton.enabled = false;
+				}
+
 			}
 
 			upgradeLevelSpeed.sprite = sprites [PlayerPrefs.GetInt (gOName + "hiz", 1) - 1];
 			upgradeLevelBrake.sprite = sprites [PlayerPrefs.GetInt (gOName + "brake", 1) - 1];
 			upgradeLevelManevra.sprite = sprites [PlayerPrefs.GetInt (gOName + "manevra", 1) - 1];
 		}
+
+
 	}
 
 	void OzellikleriGecir(){

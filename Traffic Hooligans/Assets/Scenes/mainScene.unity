@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.48771805, g: 0.57671773, b: 0.754717, a: 1}
+  m_AmbientEquatorColor: {r: 0.8862745, g: 0.85882354, b: 0.003921569, a: 1}
+  m_AmbientGroundColor: {r: 0.011764706, g: 0.010784314, b: 0.00882353, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 71f14a2d79f732f4d9893ef1b911f4ff, type: 2}
   m_HaloStrength: 0.5
@@ -33,11 +33,11 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 64
+  m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 365846080}
   m_IndirectSpecularColor: {r: 0.72797745, g: 0.78694975, b: 0.8505622, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -1641,13 +1641,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 365846079}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.46009886, y: 0.33900908, z: -0.19572699, w: 0.7969146}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 46.09, z: 0}
 --- !u!1 &371633937
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,41 +5436,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d30038864bb3ec5468b8202614e4094f, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1226486576 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1326355366870164, guid: cec35206fce127045ba6212fc03d2e64,
+--- !u!114 &1226486579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
     type: 2}
   m_PrefabInternal: {fileID: 1568743165}
---- !u!114 &1226486579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1226486576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6234a75dac3a59b4e83e3e1e610f7971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SahneIsmi: 
-  pauseButton: {fileID: 1689624179}
-  pausePanel: {fileID: 1687221564}
-  settingsPanel: {fileID: 797803293}
-  hizGosterge: {fileID: 371633937}
-  yolGosterge: {fileID: 553874320}
-  skorGosterge: {fileID: 1023083376}
-  yuksekHizGosterge: {fileID: 2115461402}
-  buttons: {fileID: 2075216592}
-  skorPanel: {fileID: 1234207301}
-  loadingPanel: {fileID: 509539763}
-  loadingSlider: {fileID: 509539762}
-  aMixer: {fileID: 24100000, guid: 1763ea7b207fd2d49aabf643fd44948f, type: 2}
-  qualityDropdown: {fileID: 0}
-  carptim: 0
-  VolumeSlider: {fileID: 2096804950}
-  skorValueText: {fileID: 467450993}
-  anaSahneIsmi: mainScene
-  garajSahneIsmi: Garage
 --- !u!1 &1234207301
 GameObject:
   m_ObjectHideFlags: 0
@@ -6819,16 +6790,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: carstart.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: carPrefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4155632211344036, guid: cec35206fce127045ba6212fc03d2e64, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6863,6 +6824,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 1959205311}
+    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
       propertyPath: Gazbutton
       value: 
       objectReference: {fileID: 581859658}
@@ -6878,9 +6844,14 @@ Prefab:
       objectReference: {fileID: 97721526}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: "PotansiyelArabaKonumlar\u0131"
+      propertyPath: yuksekHizGosterge
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2115461402}
+    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: sollamaGosterge
+      value: 
+      objectReference: {fileID: 1412489120}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: speedText
@@ -6888,48 +6859,9 @@ Prefab:
       objectReference: {fileID: 174860111}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: roadManagerP
-      value: 
-      objectReference: {fileID: 1310964088278272, guid: 761bfc2bb1b031c4fb87775e24eda0f6,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: BotCarCreatorP
-      value: 
-      objectReference: {fileID: 1839291018375008, guid: ec1461fbe2d479d4a9123f0db4178a27,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: potCarLocP
-      value: 
-      objectReference: {fileID: 1695655864257390, guid: 53a7af89b3b407a45af00eb2e6c8258a,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: posPOTOffsetZ
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326355366870164, guid: cec35206fce127045ba6212fc03d2e64, type: 2}
-      propertyPath: m_TagString
-      value: theGod
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
       propertyPath: distanceText
       value: 
       objectReference: {fileID: 80356982}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: MainCameraP
-      value: 
-      objectReference: {fileID: 1440074599857166, guid: 8f39e78c65a96ba47821d248273f10ab,
-        type: 2}
-    - target: {fileID: 82232354144065134, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 1763ea7b207fd2d49aabf643fd44948f,
-        type: 2}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: skorText
@@ -6937,26 +6869,9 @@ Prefab:
       objectReference: {fileID: 1904498391}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: seksen5alti
-      value: 
-      objectReference: {fileID: 11400000, guid: 70093af1185e3fc418d75f6e99e412f6,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: seksen5ustu
-      value: 
-      objectReference: {fileID: 11400000, guid: 24668c286de5c2141b94ed1d793f2033,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
       propertyPath: skorPanelText
       value: 
       objectReference: {fileID: 467450993}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: katedilenMesafeText
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: katedilenMesafeValueText
@@ -6969,14 +6884,14 @@ Prefab:
       objectReference: {fileID: 2103704428}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: "yak\u0131nMakasValueText"
+      propertyPath: yakinMakasValueText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1436949448}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: "yak\u0131nMakasMoneyText"
+      propertyPath: yakinMakasMoneyText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2069930638}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: seksen5kmhustuValueText
@@ -6989,77 +6904,9 @@ Prefab:
       objectReference: {fileID: 1430739108}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: katedilenMesafeParaKatSayisi
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
       propertyPath: yuksekHizValueText
       value: 
       objectReference: {fileID: 530710250}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: "yak\u0131nMakasMesafeParaKatSayisi"
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: seksen5kmhUstuParaKatSayisi
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: yuksekHizGosterge
-      value: 
-      objectReference: {fileID: 2115461402}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: toplamMoneyText
-      value: 
-      objectReference: {fileID: 353719098}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 1959205311}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: yakinMakasValueText
-      value: 
-      objectReference: {fileID: 1436949448}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: yakinMakasMoneyText
-      value: 
-      objectReference: {fileID: 2069930638}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: carPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1701194297280112, guid: 53ebd8f4a5aacd74bab4dfce31a867de,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: carPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1211802634349960, guid: f95cd2477e4a9f749ac52b4edcace23d,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: carPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1158796205520026, guid: 2552c646af3889f45a44b5f5119ad5b0,
-        type: 2}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: yakinMakasMesafeParaKatSayisi
-      value: 7.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
-        type: 2}
-      propertyPath: sollamaGosterge
-      value: 
-      objectReference: {fileID: 1412489120}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
       propertyPath: sollamaValueText
@@ -7067,24 +6914,74 @@ Prefab:
       objectReference: {fileID: 1770426897}
     - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: carstart.Array.data[0]
+      propertyPath: toplamMoneyText
       value: 
-      objectReference: {fileID: 8300000, guid: f44b6987c6fdf2a40bc3f67d6c0c64d6, type: 3}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
+      objectReference: {fileID: 353719098}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: carstart.Array.data[1]
+      propertyPath: pauseButton
       value: 
-      objectReference: {fileID: 8300000, guid: 93403b4c2c7bb9740ac21f7104190dcc, type: 3}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
+      objectReference: {fileID: 1689624179}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: carstart.Array.data[2]
+      propertyPath: pausePanel
       value: 
-      objectReference: {fileID: 8300000, guid: 17687f9d735accb43a45cdc4594adab5, type: 3}
-    - target: {fileID: 114082759319984958, guid: cec35206fce127045ba6212fc03d2e64,
+      objectReference: {fileID: 1687221564}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
         type: 2}
-      propertyPath: carstart.Array.data[3]
+      propertyPath: settingsPanel
       value: 
-      objectReference: {fileID: 8300000, guid: c57e93eeb0c986845a0811094f989a42, type: 3}
+      objectReference: {fileID: 797803293}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: hizGosterge
+      value: 
+      objectReference: {fileID: 371633937}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: yolGosterge
+      value: 
+      objectReference: {fileID: 553874320}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: skorGosterge
+      value: 
+      objectReference: {fileID: 1023083376}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: yuksekHizGosterge
+      value: 
+      objectReference: {fileID: 2115461402}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 2075216592}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: skorPanel
+      value: 
+      objectReference: {fileID: 1234207301}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: loadingPanel
+      value: 
+      objectReference: {fileID: 509539763}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: loadingSlider
+      value: 
+      objectReference: {fileID: 509539762}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: VolumeSlider
+      value: 
+      objectReference: {fileID: 2096804950}
+    - target: {fileID: 114816118387085084, guid: cec35206fce127045ba6212fc03d2e64,
+        type: 2}
+      propertyPath: skorValueText
+      value: 
+      objectReference: {fileID: 467450993}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec35206fce127045ba6212fc03d2e64, type: 2}
   m_IsPrefabAsset: 0

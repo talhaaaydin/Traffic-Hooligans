@@ -8,22 +8,23 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1326355366870164}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1326355366870164
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4155632211344036}
   - component: {fileID: 114082759319984958}
   - component: {fileID: 82232354144065134}
+  - component: {fileID: 114816118387085084}
   m_Layer: 0
   m_Name: _theGod
-  m_TagString: Untagged
+  m_TagString: theGod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +32,7 @@ GameObject:
 --- !u!4 &4155632211344036
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326355366870164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -44,12 +45,13 @@ Transform:
 --- !u!82 &82232354144065134
 AudioSource:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326355366870164}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1763ea7b207fd2d49aabf643fd44948f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 4ce5536d09910a148a92ac5408ae3c4b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -70,61 +72,76 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
 --- !u!114 &114082759319984958
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326355366870164}
   m_Enabled: 1
@@ -132,14 +149,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0f59a774cee454b98585a474756c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carstart:
+  - {fileID: 8300000, guid: f44b6987c6fdf2a40bc3f67d6c0c64d6, type: 3}
+  - {fileID: 8300000, guid: 93403b4c2c7bb9740ac21f7104190dcc, type: 3}
+  - {fileID: 8300000, guid: 17687f9d735accb43a45cdc4594adab5, type: 3}
+  - {fileID: 8300000, guid: c57e93eeb0c986845a0811094f989a42, type: 3}
   carPrefabs:
   - {fileID: 1976771962495408, guid: 40168a63c08f3d54099e41c880e5ec1c, type: 2}
-  roadManager: {fileID: 1310964088278272, guid: 761bfc2bb1b031c4fb87775e24eda0f6,
+  - {fileID: 1701194297280112, guid: 53ebd8f4a5aacd74bab4dfce31a867de, type: 2}
+  - {fileID: 1211802634349960, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  - {fileID: 1158796205520026, guid: 2552c646af3889f45a44b5f5119ad5b0, type: 2}
+  roadManagerP: {fileID: 1310964088278272, guid: 761bfc2bb1b031c4fb87775e24eda0f6,
     type: 2}
+  BotCarCreatorP: {fileID: 1839291018375008, guid: ec1461fbe2d479d4a9123f0db4178a27,
+    type: 2}
+  potCarLocP: {fileID: 1695655864257390, guid: 53a7af89b3b407a45af00eb2e6c8258a, type: 2}
   theCar: {fileID: 0}
+  BotCarCreator: {fileID: 0}
+  MainCamera: {fileID: 0}
   Gazbutton: {fileID: 0}
   Frenbutton: {fileID: 0}
   EngineStartbutton: {fileID: 0}
-  "PotansiyelArabaKonumlar\u0131": {fileID: 0}
+  yuksekHizGosterge: {fileID: 0}
+  sollamaGosterge: {fileID: 0}
   speedText: {fileID: 0}
-  posPOTOffsetZ: 20.08
+  distanceText: {fileID: 0}
+  skorText: {fileID: 0}
+  skorPanelText: {fileID: 0}
+  katedilenMesafeValueText: {fileID: 0}
+  katedilenMesafeMoneyText: {fileID: 0}
+  yakinMakasValueText: {fileID: 0}
+  yakinMakasMoneyText: {fileID: 0}
+  seksen5kmhustuValueText: {fileID: 0}
+  seksen5kmhUstuMoneyText: {fileID: 0}
+  yuksekHizValueText: {fileID: 0}
+  sollamaValueText: {fileID: 0}
+  toplamMoneyText: {fileID: 0}
+  seksen5alti: {fileID: 11400000, guid: 70093af1185e3fc418d75f6e99e412f6, type: 2}
+  seksen5ustu: {fileID: 11400000, guid: 24668c286de5c2141b94ed1d793f2033, type: 2}
+  posPOTOffsetZ: 90
+  yakinMakas: 0
+  skor: 0
+  skorHiz: 85
+  katedilenMesafeParaKatSayisi: 6
+  yakinMakasMesafeParaKatSayisi: 7.4
+  seksen5kmhUstuParaKatSayisi: 5
+  unitToKmH: 3
+  gidilenYolParasi: 0
+  yuksekHizParasi: 0
+  yakinMakasParasi: 0
+  toplamPara: 0
+--- !u!114 &114816118387085084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326355366870164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6234a75dac3a59b4e83e3e1e610f7971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SahneIsmi: 
+  pauseButton: {fileID: 0}
+  pausePanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  hizGosterge: {fileID: 0}
+  yolGosterge: {fileID: 0}
+  skorGosterge: {fileID: 0}
+  yuksekHizGosterge: {fileID: 0}
+  buttons: {fileID: 0}
+  skorPanel: {fileID: 0}
+  loadingPanel: {fileID: 0}
+  loadingSlider: {fileID: 0}
+  aMixer: {fileID: 24100000, guid: 1763ea7b207fd2d49aabf643fd44948f, type: 2}
+  qualityDropdown: {fileID: 0}
+  carptim: 0
+  VolumeSlider: {fileID: 0}
+  skorValueText: {fileID: 0}
+  anaSahneIsmi: mainScene
+  garajSahneIsmi: Garage
