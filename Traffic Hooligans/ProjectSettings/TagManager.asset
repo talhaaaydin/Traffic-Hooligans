@@ -21,6 +21,7 @@ TagManager:
   - upgradeLevelManevra
   - garageManager
   - kacParaLazimText
+  - minimapcam
   layers:
   - Default
   - TransparentFX

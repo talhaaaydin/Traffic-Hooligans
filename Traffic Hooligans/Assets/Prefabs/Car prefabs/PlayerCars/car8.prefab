@@ -697,7 +697,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701194297280112}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.32240823, y: 0.37653106, z: -1.9970274}
+  m_LocalPosition: {x: -56.47747, y: 21.693434, z: -55.84644}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 4461409396291178}
@@ -784,7 +784,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550428953991532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.85, y: 8.28, z: 34.034}
+  m_LocalPosition: {x: 10.85, y: 8.04, z: 34.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4558941850648986}
@@ -1678,6 +1678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff2c28452a38c048a5f633a50d1c9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gOName: 
   garajSahneIsmi: Garage
   myPrice: 2000
   sprites:

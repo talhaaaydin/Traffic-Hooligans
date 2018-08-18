@@ -7,19 +7,23 @@ using TMPro;
 
 public class theGodScript : MonoBehaviour {
 
+
 	public AudioClip[] carstart;
 	private AudioSource audioS;
 	public GameObject[] carPrefabs;
 	public GameObject roadManagerP, BotCarCreatorP, potCarLocP;
 	public GameObject theCar, BotCarCreator, MainCamera;
+	public Camera MiniMapCam;
 	public GameObject Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge, sollamaGosterge;
 	private GameObject PotansiyelArabaKonumları;
 	public TextMeshProUGUI speedText, distanceText, skorText, skorPanelText, katedilenMesafeValueText, katedilenMesafeMoneyText, yakinMakasValueText, yakinMakasMoneyText;
-	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, sollamaValueText, toplamMoneyText;
+	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, sollamaValueText, toplamMoneyText, uyariText;
 
 	public TMP_ColorGradient seksen5alti, seksen5ustu;
 
 	private Vector3 startPositionPlayer = new Vector3 (0, 0.85f, 0);
+
+	public float uyariTextKapanmaZamani = 3f;
 	public float posPOTOffsetZ = 20.08f;
 	private float distance, hiz, yuksekHizTime;
 	public float yakinMakas = 0;
@@ -33,6 +37,7 @@ public class theGodScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		uyariText.gameObject.SetActive (true);
 		skor = distance = hiz = yuksekHizTime = 0;
 		int prefabIndex = PlayerPrefs.GetInt ("theCarIndex", 0);
 		createCar (prefabIndex);
@@ -43,6 +48,11 @@ public class theGodScript : MonoBehaviour {
 		distance = 0;
 		Time.timeScale = 1;
 		yakinMakas = 0;
+		Invoke ("uyariTextKapa", uyariTextKapanmaZamani);
+	}
+
+	void uyariTextKapa(){
+		uyariText.gameObject.SetActive (false);
 	}
 
 	void createCar(int prefabIndex){
@@ -63,6 +73,7 @@ public class theGodScript : MonoBehaviour {
 		PotansiyelArabaKonumları.transform.position = Vector3.zero;
 
 		MainCamera.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
+		MiniMapCam.gameObject.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
 
 	}
 
