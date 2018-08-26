@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1998671864316150}
+  m_IsPrefabAsset: 1
+--- !u!1 &1998671864316150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4237251122219912}
+  - component: {fileID: 114325681641821542}
+  m_Layer: 0
+  m_Name: Yedek8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4237251122219912
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998671864316150}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -207.37457, y: 942.2838, z: -1578.0302}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114325681641821542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998671864316150}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbf9ee9a8708a34dbd4bbd747da392c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSolW: {fileID: 146076469906999062, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  onSagW: {fileID: 146573004909012876, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  arkaSolW: {fileID: 146150454897467228, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  arkaSagW: {fileID: 146554515736043494, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  onSolT: {fileID: 4100209336686184, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  onSagT: {fileID: 4994492193686366, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  arkaSolT: {fileID: 4345790614323200, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  arkaSagT: {fileID: 4210944953605398, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  arkaFarlar: {fileID: 0}
+  carptim: 0
+  hiz: 0
+  manevraBecerisi: 0.6
+  horizontalInput: 0
+  acceleration: 20
+  maxMotorForce: 5000
+  brakeForce: 8500
+  enKucukHiz: 7.5
+  enBuyukHiz: 30
+  gazBasili: 0
+  frenBasili: 0
+  hizlaniyor: 0
+  brakeTorque: 0
+  motorTorque: 0
+  VerticalInputDecreaseKatSayi: 1
+  GearRatio:
+  - 7.73
+  - 6.14
+  - 5.4
+  - 4
+  - 3.7
+  MaxRPM: 1200
+  MinRPM: 400
+  EngineRPM: 0
+  KontrolMesafesi: 3.2
+  SollamaMesafesi: 2

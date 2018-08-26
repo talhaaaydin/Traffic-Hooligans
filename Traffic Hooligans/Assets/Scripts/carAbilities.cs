@@ -36,6 +36,21 @@ public class carAbilities : MonoBehaviour {
 
 	}
 
+	public void SatinAlindiktanSonraYap(){
+		if (SceneManager.GetActiveScene ().name == garajSahneIsmi) {
+			hizUpgradeButton = GameObject.FindGameObjectWithTag ("hizUpgradeButton").GetComponent<Button> ();
+			brakeUpgradeButton = GameObject.FindGameObjectWithTag ("brakeUpgradeButton").GetComponent<Button> ();
+			manevraUpgradeButton = GameObject.FindGameObjectWithTag ("manevraUpgradeButton").GetComponent<Button> ();
+			hizUpgradeLevel = PlayerPrefs.GetInt (gOName + "hiz", 1);
+			brakeUpgradeLevel = PlayerPrefs.GetInt (gOName + "brake", 1);
+			manevraUpgradeLevel = PlayerPrefs.GetInt (gOName + "manevra", 1);
+			upgradeLevelSpeed = GameObject.FindGameObjectWithTag ("upgradeLevelSpeed").GetComponent<Image> ();
+			upgradeLevelBrake = GameObject.FindGameObjectWithTag ("upgradeLevelBrake").GetComponent<Image> ();
+			upgradeLevelManevra = GameObject.FindGameObjectWithTag ("upgradeLevelManevra").GetComponent<Image> ();
+			garageManager = GameObject.FindGameObjectWithTag ("garageManager");
+		}
+	}
+
 	public void Upgrade(string ability){
 		int a = 0;
 		switch(ability){

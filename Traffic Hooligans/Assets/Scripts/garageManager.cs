@@ -105,6 +105,8 @@ public class garageManager : MonoBehaviour {
 			PlayerPrefs.SetString (theCar.name, "satinAlindi");
 			//metodumuzu çağırıyoruz.
 			LockOrUnlockedCar (theCar.name);
+
+			theCar.GetComponent<carAbilities> ().SatinAlindiktanSonraYap ();
 		} else {
 			//eğer yeterli paramız yoksa para yok panelimizi açıyoruz
 			paraYokPanel.SetActive (true);

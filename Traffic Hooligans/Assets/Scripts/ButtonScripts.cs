@@ -36,8 +36,10 @@ public class ButtonScripts : MonoBehaviour {
 		}
 	}
 
-	public void DeleteAllPlayerPrefs(){
-		PlayerPrefs.DeleteAll ();
+	public void CheatOnPlayerPrefs(float para){
+		
+			PlayerPrefs.SetFloat ("para", para);
+
 	}
 
 	public void UpgradeButtons(string ability){

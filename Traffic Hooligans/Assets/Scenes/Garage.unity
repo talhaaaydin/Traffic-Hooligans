@@ -2658,7 +2658,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -2667,7 +2667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SIFIRLA
+  m_Text: "H\u0130LE"
 --- !u!222 &622836059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5913,7 +5913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1435834907
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5973,13 +5973,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 807354325}
-        m_MethodName: DeleteAllPlayerPrefs
-        m_Mode: 1
+        m_MethodName: CheatOnPlayerPrefs
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 6000
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -8288,6 +8288,12 @@ Prefab:
       propertyPath: reklamGosterilemiyor
       value: 
       objectReference: {fileID: 178529433}
+    - target: {fileID: 114760381431167370, guid: d28e22c772a8bc04f9598e3f02390038,
+        type: 2}
+      propertyPath: playerCarPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1585155387750428, guid: fd1cf7d6faacd5e4f94a1261b42fcad7,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28e22c772a8bc04f9598e3f02390038, type: 2}
   m_IsPrefabAsset: 0

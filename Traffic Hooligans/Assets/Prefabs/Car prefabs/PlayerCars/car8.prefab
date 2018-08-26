@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 4461409396291178}
   - component: {fileID: 33216080221680870}
   - component: {fileID: 23023038624848060}
+  - component: {fileID: 65850480698488218}
   m_Layer: 0
   m_Name: car_body
   m_TagString: Untagged
@@ -381,6 +382,7 @@ GameObject:
   - component: {fileID: 82472057824610340}
   - component: {fileID: 95197587761101870}
   - component: {fileID: 114129080185617358}
+  - component: {fileID: 114509512266892650}
   m_Layer: 0
   m_Name: car8
   m_TagString: Player
@@ -697,7 +699,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701194297280112}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -56.47747, y: 21.693434, z: -55.84644}
+  m_LocalPosition: {x: -19.393276, y: -4.150279, z: -9.347811}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 4461409396291178}
@@ -1403,8 +1405,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.223429, y: 16.5596, z: 71.30917}
-  m_Center: {x: -0.063340366, y: 9.173965, z: -2.0902872}
+  m_Size: {x: 27.223429, y: 16.5596, z: 55.48282}
+  m_Center: {x: -0.063340366, y: 9.173965, z: -10.003435}
+--- !u!65 &65850480698488218
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538985822474102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6239716, y: 0.69736797, z: 1.1346854}
+  m_Center: {x: -1.009694, y: 0.42438444, z: -0.008039548}
 --- !u!82 &82472057824610340
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1510,7 +1524,7 @@ Animator:
   m_GameObject: {fileID: 1701194297280112}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dd0ddb894ebbba42a0d571a8824e102, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1690,6 +1704,20 @@ MonoBehaviour:
   upgradeLevelManevra: {fileID: 0}
   kacParaLazim: {fileID: 0}
   ozellikGelistirmeUcreti: 80
+--- !u!114 &114509512266892650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701194297280112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ec35d02a91051409645f026f9c87e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrenAnimasyon: BreakAnim
+  DonmeSolAnimasyon: DonmeAnimSol
+  DonmeSagAnimasyon: DonmeAnimSag
 --- !u!114 &114947443352651204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1701,14 +1729,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbf9ee9a8708a34dbd4bbd747da392c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSolW: {fileID: 146076469906999062, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  onSagW: {fileID: 146573004909012876, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  arkaSolW: {fileID: 146150454897467228, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  arkaSagW: {fileID: 146554515736043494, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  onSolT: {fileID: 4100209336686184, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  onSagT: {fileID: 4994492193686366, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  arkaSolT: {fileID: 4345790614323200, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
-  arkaSagT: {fileID: 4210944953605398, guid: f95cd2477e4a9f749ac52b4edcace23d, type: 2}
+  onSolW: {fileID: 146298369455012998}
+  onSagW: {fileID: 146573905610449488}
+  arkaSolW: {fileID: 146323425878267488}
+  arkaSagW: {fileID: 146673189018423010}
+  onSolT: {fileID: 4818790384968012}
+  onSagT: {fileID: 4959917849002018}
+  arkaSolT: {fileID: 4437955207090374}
+  arkaSagT: {fileID: 4838016118704534}
   arkaFarlar: {fileID: 1490790685173306}
   carptim: 0
   hiz: 0
