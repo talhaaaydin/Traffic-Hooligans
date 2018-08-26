@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 82830211360219216}
   - component: {fileID: 95933148949045654}
   - component: {fileID: 114989722850146044}
+  - component: {fileID: 114255005152635334}
   m_Layer: 0
   m_Name: car3
   m_TagString: Player
@@ -327,7 +328,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976771962495408}
   m_LocalRotation: {x: 0, y: 1, z: -0, w: -0.0000001872535}
-  m_LocalPosition: {x: 3.2264004, y: -1.6006918, z: 3.074216}
+  m_LocalPosition: {x: 22459.514, y: 10002.518, z: 2030.9385}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4411526521816190}
@@ -1136,6 +1137,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114255005152635334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976771962495408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ec35d02a91051409645f026f9c87e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrenAnimasyon: BreakAnim
+  DonmeSolAnimasyon: DonmeAnimSol
+  DonmeSagAnimasyon: DonmeAnimSag
 --- !u!114 &114260575235042394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,6 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff2c28452a38c048a5f633a50d1c9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gOName: 
   garajSahneIsmi: Garage
   myPrice: 1000
   sprites:

@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CarControllerScript : MonoBehaviour {
-
 	public WheelCollider onSolW, onSagW, arkaSolW, arkaSagW;
 	public Transform onSolT, onSagT, arkaSolT, arkaSagT;
 	public GameObject arkaFarlar;
 	public bool carptim = false;
 
-	private GameObject theGod;
+	Text horizontal;
 
+	private GameObject theGod;
 	private Rigidbody rb;
 	private AudioSource audioS;
 	//diğer araçlar tarafından kontrol edildiği için public olması gerekir.
@@ -92,7 +92,6 @@ public class CarControllerScript : MonoBehaviour {
 		bool overtakeLeft = Physics.Raycast (transform.position, transform.TransformDirection (Vector3.left), out hit, SollamaMesafesi);
 		bool overtakeRight = Physics.Raycast (transform.position, transform.TransformDirection (Vector3.right), out hit2, SollamaMesafesi);
 		if (overtakeRight && hit2.transform.gameObject.CompareTag ("BotCar") && hiz * unitToKmH >= skorHiz) {
-			Debug.Log (hit2.distance + " right");
 			a = 1;
 			theGodS.sollamaGosterge.SetActive (true);
 		} else {
@@ -100,7 +99,6 @@ public class CarControllerScript : MonoBehaviour {
 			theGodS.sollamaGosterge.SetActive (false);
 		}
 		if (overtakeLeft && hit.transform.gameObject.CompareTag("BotCar") && hiz * unitToKmH >= skorHiz) {
-			Debug.Log (hit.distance + " left");
 			a = 1;
 			theGodS.sollamaGosterge.SetActive (true);
 		} else {
@@ -123,6 +121,7 @@ public class CarControllerScript : MonoBehaviour {
 	private void GetInput(){
 		//Accelerometerden X yönündeki alınan değer.
 		horizontalInput = Input.acceleration.x;
+		horizontal.text = horizontalInput.ToString ();
 		//Vertical input değerini en az -1 en fazla 1 arasında sıkıştır.
 		//verticalInput = Mathf.Clamp (verticalInput, -1, 1);
 	}
@@ -292,6 +291,7 @@ public class CarControllerScript : MonoBehaviour {
 	}
 
 	void Start(){
+		horizontal = GameObject.FindGameObjectWithTag ("horizontalText").GetComponent<Text> ();
 		rb = GetComponent<Rigidbody> ();
 		verticalInput = 0;
 		audioS = GetComponent<AudioSource> ();

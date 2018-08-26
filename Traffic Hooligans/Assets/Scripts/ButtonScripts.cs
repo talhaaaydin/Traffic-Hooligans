@@ -11,6 +11,7 @@ public class ButtonScripts : MonoBehaviour {
 	private string SahneIsmi;
 	public Button pauseButton; 
 	public GameObject pausePanel, settingsPanel, hizGosterge, yolGosterge, skorGosterge, yuksekHizGosterge, buttons, skorPanel, loadingPanel;
+	public GameObject sagMiniMap, solMiniMap, solMiniMapCam, sagMiniMapCam;
 	public Slider loadingSlider;
 	public AudioMixer aMixer;
 	public TMP_Dropdown qualityDropdown;
@@ -43,16 +44,25 @@ public class ButtonScripts : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<carAbilities> ().Upgrade (ability);
 	}
 
+	void GostergeButtonPanelActiveOrDeactive(bool t){
+		hizGosterge.SetActive (t);
+		yolGosterge.SetActive (t);
+		skorGosterge.SetActive (t);
+		yuksekHizGosterge.SetActive (t);
+		buttons.SetActive (t);
+		sagMiniMap.SetActive (t);
+		sagMiniMapCam.SetActive (t);
+		solMiniMap.SetActive (t);
+		solMiniMapCam.SetActive (t);
+	}
+
 	public void pause(){
 		if (SahneIsmi == anaSahneIsmi) {
 			Animation animation = pauseButton.gameObject.GetComponent<Animation> ();
 			animation.Play (animation.clip.name);
 
-			hizGosterge.SetActive (false);
-			yolGosterge.SetActive (false);
-			skorGosterge.SetActive (false);
-			yuksekHizGosterge.SetActive (false);
-			buttons.SetActive (false);
+			GostergeButtonPanelActiveOrDeactive (false);
+
 			pausePanel.SetActive (true);
 			PauseAllAudio ();
 			Time.timeScale = 0;
@@ -62,11 +72,7 @@ public class ButtonScripts : MonoBehaviour {
 
 	void skorMenu(){
 		if (SahneIsmi == anaSahneIsmi) {
-			hizGosterge.SetActive (false);
-			yolGosterge.SetActive (false);
-			skorGosterge.SetActive (false);
-			yuksekHizGosterge.SetActive (false);
-			buttons.SetActive (false);
+			GostergeButtonPanelActiveOrDeactive (false);
 			PauseAllAudio ();
 			skorValueText.SetText(GetComponent<theGodScript>().skor.ToString("F1"));
 			skorPanel.SetActive (true);
@@ -91,11 +97,7 @@ public class ButtonScripts : MonoBehaviour {
 
 	public void Continue(){
 		if (SahneIsmi == anaSahneIsmi) {
-			hizGosterge.SetActive (true);
-			yolGosterge.SetActive (true);
-			skorGosterge.SetActive (true);
-			yuksekHizGosterge.SetActive (true);
-			buttons.SetActive (true);
+			GostergeButtonPanelActiveOrDeactive (true);
 			pausePanel.SetActive (false);
 			ContinueAllAudio ();
 			Time.timeScale = 1;

@@ -6,7 +6,6 @@ public class RoadManagerScript : MonoBehaviour {
 
 	private GameObject yollarParent;
 	public GameObject[] yolPrefabs;
-	int i = 0;
 	private Transform playerTransform;
 	private float spawnZ = -5f;
 	public float roadLength;
@@ -27,11 +26,9 @@ public class RoadManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (playerTransform.position.z - toleranceOffset> spawnZ - roadLength * yolSayisi) {
-			i++;
 			//int a = Random.Range (0, yolPrefabs.Length);
 			//spawnRoad (a);
 			transformOldRoad ();
-			Debug.Log (i);
 		}
 	}
 

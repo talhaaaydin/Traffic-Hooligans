@@ -13,8 +13,8 @@ public class theGodScript : MonoBehaviour {
 	public GameObject[] carPrefabs;
 	public GameObject roadManagerP, BotCarCreatorP, potCarLocP;
 	public GameObject theCar, BotCarCreator, MainCamera;
-	public Camera MiniMapCam;
-	public GameObject Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge, sollamaGosterge;
+	public Camera SagMiniMapCam, SolMiniMapCam;
+	public GameObject SagMiniMap, SolMiniMap, Gazbutton, Frenbutton, EngineStartbutton, yuksekHizGosterge, sollamaGosterge;
 	private GameObject PotansiyelArabaKonumları;
 	public TextMeshProUGUI speedText, distanceText, skorText, skorPanelText, katedilenMesafeValueText, katedilenMesafeMoneyText, yakinMakasValueText, yakinMakasMoneyText;
 	public TextMeshProUGUI seksen5kmhustuValueText, seksen5kmhUstuMoneyText, yuksekHizValueText, sollamaValueText, toplamMoneyText, uyariText;
@@ -51,6 +51,31 @@ public class theGodScript : MonoBehaviour {
 		Invoke ("uyariTextKapa", uyariTextKapanmaZamani);
 	}
 
+	void MiniMapKameraAyarlari(){
+		float horizontalInput = theCar.GetComponent<CarControllerScript> ().horizontalInput;
+		float mutlakHorizontal = 0;
+		if (horizontalInput >= 0) {
+			mutlakHorizontal = horizontalInput;
+		} else {
+			mutlakHorizontal = horizontalInput * -1;
+		}
+
+		if(mutlakHorizontal < 0.9f){
+			SagMiniMap.SetActive (true);
+			SolMiniMap.SetActive (true);
+		}
+
+		if (horizontalInput > 0 && mutlakHorizontal >= 0.9f) {
+			SagMiniMap.SetActive (true);
+			SolMiniMap.SetActive (false);
+		} else if (horizontalInput < 0 && mutlakHorizontal >= 0.9f) {
+			SagMiniMap.SetActive (false);
+			SolMiniMap.SetActive (true);
+		}
+
+
+	}
+
 	void uyariTextKapa(){
 		uyariText.gameObject.SetActive (false);
 	}
@@ -73,13 +98,15 @@ public class theGodScript : MonoBehaviour {
 		PotansiyelArabaKonumları.transform.position = Vector3.zero;
 
 		MainCamera.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
-		MiniMapCam.gameObject.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
+		SagMiniMapCam.gameObject.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
+		SolMiniMapCam.gameObject.GetComponent<camerafollow> ().objectToFollow = theCar.transform;
 
 	}
 
 	void Update(){
 		ArabaKonumlarıTransformFix ();
 		TextSettings ();
+		MiniMapKameraAyarlari ();
 		//uzaklık = hiz * zaman
 		//uzaklık birimi = km
 		//hiz birimi = km / saat = km / 3600 saniye
