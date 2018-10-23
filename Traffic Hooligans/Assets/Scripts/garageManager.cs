@@ -16,7 +16,7 @@ public class garageManager : MonoBehaviour {
 	public Button nextButton, beforeButton, playButton, buyButton;
 	public TextMeshProUGUI hizValue, frenValue, manevraValue, carPriceText;
 	public TextMeshProUGUI moneyText, scoreText, kacParaLazim;
-	private GameObject kilimler;
+	private GameObject kilimler, LocalizationManager;
 	public float rotateSpeed = 10f;
 	bool kilimleriDondurelimMi = true;
 	public string baslangicArabasiIsim = "car3", anaSahneIsmi = "mainScene";
@@ -35,7 +35,6 @@ public class garageManager : MonoBehaviour {
 		hizUpgradeButton = GameObject.FindGameObjectWithTag ("hizUpgradeButton").GetComponent<Button>();
 		brakeUpgradeButton = GameObject.FindGameObjectWithTag ("brakeUpgradeButton").GetComponent<Button>();
 		manevraUpgradeButton = GameObject.FindGameObjectWithTag ("manevraUpgradeButton").GetComponent<Button>();
-
 		CreateCar ();	
 		TextSettings ();
 		ButonaAta ();
@@ -111,7 +110,7 @@ public class garageManager : MonoBehaviour {
 			//eğer yeterli paramız yoksa para yok panelimizi açıyoruz
 			paraYokPanel.SetActive (true);
 			//ve ne kadar paranın eksik olduğunu gösteren yazımızın içeriğini değiştiriyoruz.
-			kacParaLazim.text = (price - PlayerPrefs.GetFloat ("para", 0)).ToString () + " PARA LAZIM!";
+			kacParaLazim.text = (price - PlayerPrefs.GetFloat ("para", 0)).ToString () ;
 		}
 	}
 
@@ -245,6 +244,6 @@ public class garageManager : MonoBehaviour {
 
 	void TextSettings(){
 		moneyText.text = PlayerPrefs.GetFloat ("para", 0).ToString();
-		scoreText.text = "En yUksek: " + PlayerPrefs.GetFloat ("skorBest", 0).ToString ();
+		scoreText.text = PlayerPrefs.GetFloat ("skorBest", 0).ToString ();
 	}
 }

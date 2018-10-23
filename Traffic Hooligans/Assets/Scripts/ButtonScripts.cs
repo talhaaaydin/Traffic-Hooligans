@@ -42,6 +42,12 @@ public class ButtonScripts : MonoBehaviour {
 
 	}
 
+	public void ResetPlayerPrefs(){
+
+		PlayerPrefs.DeleteAll ();
+
+	}
+
 	public void UpgradeButtons(string ability){
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<carAbilities> ().Upgrade (ability);
 	}
@@ -133,6 +139,7 @@ public class ButtonScripts : MonoBehaviour {
 		}
 
 	}
+
 
 	public void Settings(){
 		if (SahneIsmi == anaSahneIsmi) {

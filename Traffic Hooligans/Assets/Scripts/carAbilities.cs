@@ -86,7 +86,7 @@ public class carAbilities : MonoBehaviour {
 		} else {
 			garageManager.GetComponent<garageManager> ().paraYokPanel.SetActive (true);
 			kacParaLazim = garageManager.GetComponent<garageManager> ().kacParaLazim;
-			kacParaLazim.SetText (((a + 1) * ozellikGelistirmeUcreti - PlayerPrefs.GetFloat("para", 0)).ToString() + " PARA LAZIM!");
+			kacParaLazim.SetText (((a + 1) * ozellikGelistirmeUcreti - PlayerPrefs.GetFloat("para", 0)).ToString());
 		}
 	}
 

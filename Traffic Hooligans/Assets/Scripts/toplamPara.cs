@@ -13,8 +13,6 @@ public class toplamPara : MonoBehaviour {
 	void Start () {
 		theGodS = GameObject.FindGameObjectWithTag ("theGod").GetComponent<theGodScript> ();
 		float toplamPara = Mathf.RoundToInt (theGodS.gidilenYolParasi + theGodS.yuksekHizParasi + theGodS.yakinMakasParasi);
-		Debug.Log ("GidilenYol: " + theGodS.gidilenYolParasi + ", YuksekHiz: " + theGodS.yuksekHizParasi + ", YakinMakas: " + theGodS.yakinMakasParasi
-			+ ", ToplamPara: " + toplamPara);
 		toplamParaValue.text = toplamPara.ToString();
 		PlayerPrefs.SetFloat ("para", PlayerPrefs.GetFloat ("para", 0) + toplamPara);
 		Debug.Log (PlayerPrefs.GetFloat ("para", 0));

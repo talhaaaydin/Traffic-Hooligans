@@ -9,8 +9,6 @@ public class CarControllerScript : MonoBehaviour {
 	public GameObject arkaFarlar;
 	public bool carptim = false;
 
-	Text horizontal;
-
 	private GameObject theGod;
 	private Rigidbody rb;
 	private AudioSource audioS;
@@ -121,7 +119,6 @@ public class CarControllerScript : MonoBehaviour {
 	private void GetInput(){
 		//Accelerometerden X yönündeki alınan değer.
 		horizontalInput = Input.acceleration.x;
-		horizontal.text = horizontalInput.ToString ();
 		//Vertical input değerini en az -1 en fazla 1 arasında sıkıştır.
 		//verticalInput = Mathf.Clamp (verticalInput, -1, 1);
 	}
@@ -291,7 +288,6 @@ public class CarControllerScript : MonoBehaviour {
 	}
 
 	void Start(){
-		horizontal = GameObject.FindGameObjectWithTag ("horizontalText").GetComponent<Text> ();
 		rb = GetComponent<Rigidbody> ();
 		verticalInput = 0;
 		audioS = GetComponent<AudioSource> ();
